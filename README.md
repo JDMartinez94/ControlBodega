@@ -7,6 +7,7 @@ SISTEMA PARA EL CONTROL DE BODEGA
 MANTENIMIENTOS
 
 • Ingreso de nuevas herramientas a la base de datos (crud)
+
 • Registro del personal que usa las herramientas (crud)
 
 REGISTROS
@@ -16,11 +17,17 @@ REGISTROS
 REPORTES
 
 • Reportes de herramientas según categoría
+
 • Reporte de herramientas defectuosas
+
 • Reporte de herramientas nuevas
+
 • Reporte de herramientas en uso (prestadas)
+
 • Reporte de herramientas disponibles a la hora y fecha
+
 • Reporte de herramientas prestadas por persona
+
 • Debe haber un historial general de préstamos de herramientas.
 
 
