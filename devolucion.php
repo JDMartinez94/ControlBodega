@@ -74,12 +74,12 @@
 					/>
 				</div>
 			</div>
-		</div>
-		</div>
+		</div>	
+
 		<div id="modal">
 		<div style="width:20%; margin:auto; margin-top: 6%; background-color: white; padding: 10px;">
 		<form>
-		<div class="form-group">
+			<div class="form-group">
 				<label for="fechaTransac">Fecha de transaccion</label>
 				<input type="date" class="form-control" id="fechaTransac">				
 			</div>
