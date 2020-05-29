@@ -18,21 +18,21 @@
 		<div id="menuHub">
 			<div id="contenedorHub">
 				<div id="prestamo">
-					<a href="prestamo.html">
+					<a href="prestamo.php">
 						<img src="media/prestamo.png" alt="Icono de prestamo" /><br />
 						Prestamo
 					</a>
 				</div>
 
 				<div id="reportes">
-					<a href="reportes.html">
+					<a href="reportes.php">
 						<img src="media/reportes.png" alt="Icono de reportes" /><br />
 						Reportes
 					</a>
 				</div>
 
 				<div id="personal">
-					<a href="personal.html">
+					<a href="personal.php">
 						<img
 							src="media/nuevopers.png"
 							alt="Icono de nuevo personal"
@@ -42,7 +42,7 @@
 				</div>
 
 				<div id="devolucion">
-					<a href="devolucion.html">
+					<a href="devolucion.php">
 						<img
 							src="media/devolucion.png"
 							alt="Icono de devolucion de herramientas"
@@ -52,7 +52,7 @@
 				</div>
 
 				<div id="nuevas">
-					<a href="nuevasHerr.html">
+					<a href="nuevasHerr.php">
 						<img
 							src="media/nuevaherr.png"
 							alt="Icono de nuevas herramientas"
@@ -62,7 +62,7 @@
 				</div>
 
 				<div id="danada">
-					<a href="herrDanadas.html">
+					<a href="herrDanadas.php">
 						<img
 							src="media/herrdanada.png"
 							alt="Icono de herramientas dañadas"

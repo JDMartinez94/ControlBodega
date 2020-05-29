@@ -18,14 +18,14 @@
 		<div id="menuHub">
 			<div id="contenedorHub">
 				<div id="prestamoOpe">
-					<a href="prestamo.html">
+					<a href="prestamo.php">
 						<img src="media/prestamo.png" alt="Icono de prestamo" /><br />
 						Prestamo
 					</a>
 				</div>
 
 				<div id="devolucionOpe">
-					<a href="devolucion.html">
+					<a href="devolucion.php">
 						<img
 							src="media/devolucion.png"
 							alt="Icono de devolucion de herramientas"
@@ -35,7 +35,7 @@
 				</div>
 
 				<div id="nuevasOpe">
-					<a href="nuevasHerr.html">
+					<a href="nuevasHerr.php">
 						<img
 							src="media/nuevaherr.png"
 							alt="Icono de nuevas herramientas"
@@ -45,7 +45,7 @@
 				</div>
 
 				<div id="danadaOpe">
-					<a href="herrDanadas.html">
+					<a href="herrDanadas.php">
 						<img
 							src="media/herrdanada.png"
 							alt="Icono de herramientas dañadas"
