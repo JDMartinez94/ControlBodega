@@ -76,7 +76,7 @@
 			</div>
 		</div>
 		<div id="modal">
-		<div style="width:20%; margin:auto; margin-top: 6%; background-color: white; padding: 10px;">
+		<div style="width:90%; height:90%; margin:auto; margin-top: 2%; background-color: white; padding: 10px;">
 		<form>
 		<div class="form-group">
 				<label for="fechaTransac">Fecha de transaccion</label>
