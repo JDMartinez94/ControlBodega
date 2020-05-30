@@ -10,7 +10,7 @@
 		<title>Personal</title>
 	</head>
 	<body>
-		<div id="header">
+	<div id="header">
 			<div id="icono">
 				<img
 					src="media/Inventool.png"
@@ -20,6 +20,7 @@
 			</div>
 			<div id="menu">
 				<div id="opcion">
+				<a href="prestamo.php">
 					<img
 						src="media/prestamo.png"
 						alt="prestamo"
@@ -27,24 +28,29 @@
 						height="70px"
 						id="prestamo"
 					/>
+				</a>
 				</div>
 
 				<div id="opcion">
+				<a href="devolucion.php">
 					<img
 						src="media/devolucion.png"
 						alt="prestamo"
 						width="70px"
 						height="70px"
 					/>
+				</a>
 				</div>
 
 				<div id="opcion">
+				<a href="reportes.php">
 					<img
 						src="media/reportes.png"
 						alt="prestamo"
 						width="70px"
 						height="70px"
 					/>
+				</a>
 				</div>
 
 				<div id="activo">
@@ -53,30 +59,34 @@
 						alt="prestamo"
 						width="70px"
 						height="70px"
-					/>
+					/>		
 				</div>
 
 				<div id="opcion">
+				<a href="nuevasHerr.php">
 					<img
 						src="media/nuevaherr.png"
 						alt="prestamo"
 						width="70px"
 						height="70px"
 					/>
+				</a>
 				</div>
 
 				<div id="opcion">
+				<a href="herrDanadas.php">
 					<img
 						src="media/herrdanada.png"
 						alt="prestamo"
 						width="70px"
 						height="70px"
 					/>
+				</a>
 				</div>
 			</div>
 		</div>
 		<div id="modal">
-		<div style="width:20%; margin:auto; margin-top: 3.5%; background-color: white; padding: 10px;">
+		<div style="width:90%; margin:auto; margin-top: 4%; background-color: white; padding: 10px;">
 		<form>			
 			<div class="form-group">
 				<label for="nomEmp">Nombre del nuevo empleado</label>

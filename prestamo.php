@@ -10,7 +10,7 @@
 		<title>Prestamos</title>
 	</head>
 	<body>
-		<div id="header">
+	<div id="header">
 			<div id="icono">
 				<img
 					src="media/Inventool.png"
@@ -19,7 +19,7 @@
 				/>
 			</div>
 			<div id="menu">
-				<div id="activo">
+				<div id="activo">				
 					<img
 						src="media/prestamo.png"
 						alt="prestamo"
@@ -30,53 +30,64 @@
 				</div>
 
 				<div id="opcion">
+				<a href="devolucion.php">
 					<img
 						src="media/devolucion.png"
 						alt="prestamo"
 						width="70px"
 						height="70px"
 					/>
+				</a>
 				</div>
 
 				<div id="opcion">
+				<a href="reportes.php">
 					<img
 						src="media/reportes.png"
 						alt="prestamo"
 						width="70px"
 						height="70px"
 					/>
+				</a>
 				</div>
 
 				<div id="opcion">
+				<a href="personal.php">
 					<img
 						src="media/nuevopers.png"
 						alt="prestamo"
 						width="70px"
 						height="70px"
 					/>
+				</a>					
 				</div>
 
 				<div id="opcion">
+				<a href="nuevasHerr.php">
 					<img
 						src="media/nuevaherr.png"
 						alt="prestamo"
 						width="70px"
 						height="70px"
 					/>
+				</a>
 				</div>
 
 				<div id="opcion">
+				<a href="herrDanadas.php">
 					<img
 						src="media/herrdanada.png"
 						alt="prestamo"
 						width="70px"
 						height="70px"
 					/>
+				</a>
 				</div>
 			</div>
 		</div>
+
 		<div id="modal">
-		<div style="width:90%; height:90%; margin:auto; margin-top: 2%; background-color: white; padding: 10px;">
+		<div style="width:90%; margin:auto; margin-top: 5%; background-color: white; padding: 10px;">
 		<form>
 		<div class="form-group">
 				<label for="fechaTransac">Fecha de transaccion</label>
