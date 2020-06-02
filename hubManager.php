@@ -9,6 +9,12 @@ session_start();
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="style.css" />
 		<title>Welcome to InvenTools Control</title>
+
+		<link rel="stylesheet" href="sweetalert/sweetalert2.css">
+		<script src="sweetalert/sweetalert2.js"></script>
+
+	
+		
 	</head>
 	<body class="hub">
 	   <div id="icono">
@@ -87,12 +93,17 @@ session_start();
 		<?php
 			if($_SESSION["user"]["id_rol"]==1)
 			{
-				print "Bienvenido Sr.".$_SESSION["user"]["nombre"];
+				$username = $_SESSION["user"]["nombre"];
+				echo "<script>swal({title:'Exito', text:'Bienvenido: '+ '$username', type:'success'});</script>";
 			}
 			else
 			{
-				header("Location:index.php");
+				$username = $_SESSION["user"]["nombre"];
+				echo "<script>swal({title:'Exito', text:'Su usario no es administrador: '+ '$username', type:'error'}).then(function(){window.location = 'index.php'});</script>";
+				//header("location:index.php");
 			}
-                ?> 
+        ?> 
 	</body>
+
+
 </html>
