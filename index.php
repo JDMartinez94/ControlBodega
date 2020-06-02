@@ -48,7 +48,7 @@ if(isset($_REQUEST["estado"])){
 </head>
 <body>
     <body class="hub">
-    <div class="contenedorFlex">   
+    <div class="contenedorFlex ">   
         <div class="bgMenu">
             <div class="titulo">
                 <p>InvenTools Control</p>

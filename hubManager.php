@@ -83,5 +83,16 @@ session_start();
 				</div>
 			</div>
 		</div>
+
+		<?php
+			if($_SESSION["user"]["id_rol"]==1)
+			{
+				print "Bienvenido Sr.".$_SESSION["user"]["nombre"];
+			}
+			else
+			{
+				header("Location:index.php");
+			}
+                ?> 
 	</body>
 </html>
