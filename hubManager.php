@@ -11,13 +11,21 @@ session_start();
 		<title>Welcome to InvenTools Control</title>
 	</head>
 	<body class="hub">
-		<div id="icono">
+	   <div id="icono">
+			<div id="icono">
+			<a href="index.php?estado=cerrado">
+			<img src="media/Inventool.png" alt="Icono de Inventools Control" id="icono"
+			/></a>
+		</div>
+		
+		
+		<!--<div id="icono">
 			<img
 				src="media/Inventool.png"
 				alt="Icono de Inventools Control"
 				id="icono"
-			/>
-		</div>
+			/> hice el boton Inventools un cierre de sesion  -->
+		
 
 		<div id="menuHub">
 			<div id="contenedorHub">
