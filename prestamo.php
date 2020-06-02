@@ -118,20 +118,17 @@ function menu($acceso){
 	</head>
 	<body>
 	<div id="header">
-			<div id="icono">
-				<img
-					src="media/Inventool.png"
-					alt="Icono de Inventools Control"
-					id="icono"
-				/>
-			</div>
+	    <div id="icono">
+			<a href="index.php?estado=cerrado">
+			<img src="media/Inventool.png" alt="Icono de Inventools Control" id="icono"
+			/></a>
+		</div>
 			<div id="menu">
 				<?php
 				menu($acceso);
 				?>
 			</div>
 		</div>
-
 		<div id="modal">
 		<div style="width:90%; margin:auto; margin-top: 5%; background-color: white; padding: 10px;">
 		<form>
