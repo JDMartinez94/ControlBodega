@@ -1,7 +1,9 @@
 <?php
+include("Credenciales.php");
+
 session_start();
-function existe($user,$pass){
-    $mysqli=new mysqli("localhost","root","","inventools");
+function existe($user,$pass){    
+    $mysqli=new mysqli(SERVIDOR,USUARIO,CONTRA,BD);
     if($mysqli->connect_errno){
         print "Error al conectar ".$mysqli->connect_error;
     }
@@ -54,7 +56,7 @@ if(isset($_REQUEST["estado"])){
             <div class="formulario">
                 <form action="#" method="POST">
                     <input type="text" name="txtUsuario"  placeholder="Usuario" class="input"><br><br>
-                    <input type="text" name="txtContrasena"  placeholder="Contraseña" class="input">
+                    <input type="password" name="txtContrasena"  placeholder="Contraseña" class="input">
                     <br>
                     <br>
                     <br>

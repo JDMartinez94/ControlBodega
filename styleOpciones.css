@@ -51,11 +51,6 @@ body {
 	}
 }
 
-#activo {
-	justify-self: center;
-	background-color: rgba(242, 205, 73, 1);
-}
-
 #opcion {
 	justify-self: center;
 }
