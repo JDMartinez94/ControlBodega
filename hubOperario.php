@@ -79,7 +79,7 @@ session_start();
 			else
 			{
 				$username = $_SESSION["user"]["nombre"];
-				echo "<script>swal({title:'Exito', text:'Su usario es administrador: '+ '$username', type:'error'}).then(function(){window.location = 'index.php'});</script>";
+				echo "<script>swal({title:'Exito', text:'Se ha iniciado sesión de forma incorrecta, por favor intente de nuevo.', type:'error'}).then(function(){window.location = 'index.php'});</script>";
 				//header("location:index.php");
 			}
         ?> 
