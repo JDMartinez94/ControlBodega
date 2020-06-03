@@ -10,7 +10,6 @@ class DAOherramienta{
     private $con;
 
     public function __construct(){
-
     }
     public function conectar(){
         try{
@@ -37,7 +36,6 @@ class DAOherramienta{
         }
         $this->desconectar();
     }
-
     public function eliminar($codigo_herramienta){        
         $sql="delete from herramienta where codigo_herramienta=$codigo_herramienta";
         $this->conectar();
@@ -48,7 +46,6 @@ class DAOherramienta{
         }
         $this->desconectar();
     }
-
     public function cambiar($herr,$cat,$uso,$prest,$cond,$codigo_herramienta){
         $herr= new herramienta();
         $cat = new categoria();
@@ -59,10 +56,10 @@ class DAOherramienta{
         "UPDATE platillos SET         
         fecha_ingreso = '".$herr->getFecha_ingreso()."',
         nombre_herramienta = '".$herr->getNombre_herramienta()."',
-        id_categoria = .$cat->getId_categoria().,
-        id_status_uso = .$uso->getId_status_uso().,
-        id_status_prestamo = .$camb->getPrecio().,
-        id_condicion = .$camb->getPrecio().,
+        id_categoria = ".$cat->getId_categoria().",
+        id_status_uso = ".$uso->getId_status_uso().",
+        id_status_prestamo = ".$prest->getId_status_prestamo().",
+        id_condicion = ".$cond->getId_condicion().",
         WHERE codigo = ".$codigo_herramienta.";";
         
         $this->conectar();
@@ -73,8 +70,6 @@ class DAOherramienta{
         }
         $this->desconectar();        
     }
-
 }
-
 
 ?>
