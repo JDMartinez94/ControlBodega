@@ -94,7 +94,7 @@ session_start();
 			if($_SESSION["user"]["id_rol"]==1)
 			{
 				$username = $_SESSION["user"]["nombre"];
-				echo "<script>swal({title:'Exito', text:'Bienvenido: '+ '$username', type:'success'});</script>";
+				echo "<script>swal({title:'Exito', text:'Bienvenido(a): '+ '$username', type:'success'});</script>";
 			}
 			else
 			{
