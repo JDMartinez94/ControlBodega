@@ -2,6 +2,8 @@
 session_start();
 $acceso = $_SESSION["user"]["id_rol"];
 include("PHP/formulas.php");
+include("PHP/DAOherramienta.php");
+$daoherr = new DAOherramienta();
 ?>
 
 <!DOCTYPE html>
