@@ -19,8 +19,7 @@ session_start();
 	<body class="hub">
 	   <div id="icono">
 			<a href="index.php?estado=cerrado">
-			<img src="media/Inventool.png" alt="Icono de Inventools Control" id="icono"
-			/></a>
+			<img src="media/Inventool.png" alt="Icono de Inventools Control" id="icono"/></a>
 		</div>
 		
 		
