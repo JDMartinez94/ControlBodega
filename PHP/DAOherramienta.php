@@ -2,28 +2,24 @@
 include("credenciales.php");
 include("herramienta.php");
 
-class DAOherramienta{
+class DAOherramienta {
     private $con;
-
-    public function __construct(){
-    }
+    
     public function conectar(){
         try{
-        $this->con= new mysqli(SERVIDOR, USUARIO, CONTRA, DB);
-        }catch (Exception $exc){
-            echo $exc->getTraceAsString();
+        $this->con= new mysqli(SERVIDOR,USUARIO,CONTRA,BD) or die ("Error al conectar");    
+        } catch (Exception $ex) {
+            echo $ex->getTraceAsString();
         }
     }
     public function desconectar(){
         $this->con->close();
     }
-    public function insertar($herr,$cat,$uso,$prest,$cond){
-        $herr= new herramienta();
-        $cat = new categoria();
-        $uso = new status_uso();
-        $prest = new status_prestamo();
-        $cond = new condicion();        
-        $sql="insert into herramienta values('".$herr->getFecha_ingreso()."','".$herr->getNombre_herramienta()."',".$cat->getId_categoria().",".$uso->getId_status_uso().",1,1)";
+    public function insertar($obj){
+        $herr = new herramienta();
+        $herr = $obj;
+        $sql="insert into herramienta (fecha_ingreso,nombre_herramienta,id_categoria,id_status_uso,id_status_prestamo,id_condicion)"
+        ."values('".$obj->getFecha_ingreso()."','".$obj->getNombre_herramienta()."',".$obj->getId_categoria().",".$obj->getId_status_uso().",".$obj->getId_status_prestamo().",".$obj->getId_condicion().");";
         $this->conectar();
         if ($this->con->query($sql)){
             echo "<script>swal({title: 'Exito',text: 'El registro fue exitoso',icon: 'success'})</script>";
@@ -42,20 +38,17 @@ class DAOherramienta{
         }
         $this->desconectar();
     }
-    public function cambiar($herr,$cat,$uso,$prest,$cond,$codigo_herramienta){
-        $herr= new herramienta();
-        $cat = new categoria();
-        $uso = new status_uso();
-        $prest = new status_prestamo();
-        $cond = new condicion();                
+    public function cambiar($obj,$codigo_herramienta){
+        $herr = new herramienta();
+        $obj = $herr;
         $sql = 
         "UPDATE platillos SET         
-        fecha_ingreso = '".$herr->getFecha_ingreso()."',
-        nombre_herramienta = '".$herr->getNombre_herramienta()."',
-        id_categoria = ".$cat->getId_categoria().",
-        id_status_uso = ".$uso->getId_status_uso().",
-        id_status_prestamo = ".$prest->getId_status_prestamo().",
-        id_condicion = ".$cond->getId_condicion().",
+        fecha_ingreso = '".$obj->getFecha_ingreso()."',
+        nombre_herramienta = '".$obj->getNombre_herramienta()."',
+        id_categoria = ".$obj->getId_categoria().",
+        id_status_uso = ".$obj->getId_status_uso().",
+        id_status_prestamo = ".$obj->getId_status_prestamo().",
+        id_condicion = ".$obj->getId_condicion().",
         WHERE codigo = ".$codigo_herramienta.";";
         
         $this->conectar();
