@@ -3,10 +3,7 @@ session_start();
 $acceso = $_SESSION["user"]["id_rol"];
 include("PHP/formulas.php");
 include("PHP/DAOherramienta.php");
-$dao = new DAOherramienta();
-$herramienta = new herramienta();
-
-
+$daoherr = new DAOherramienta();
 ?>
 
 <!DOCTYPE html>
@@ -35,52 +32,39 @@ $herramienta = new herramienta();
 		</div>
 		<div id="modal">
 		<div style="width:90%; margin:auto; margin-top: 9%; background-color: white; padding: 10px;">
-                    <form method="POST" action="#">
+		<form>
+			<div class="form-group">
+				<label for="fechaIngreso">Fecha de ingreso</label>
+				<input type="date" class="form-control" id="fechaIngreso">				
+			</div>
 			<div class="form-group">
 				<label for="nombreHerr">Nombre de la nueva herramienta</label>
-				<input type="text" class="form-control" name="nombreHerr">
+				<input type="text" class="form-control" id="nomEnombreHerrmp">
 			</div>
 			<label for="nivelAccess">Categoria de la herramienta</label>
-			<select class="form-control" name="categoria">
+			<select class="form-control">
 			<option>Seleccione una opcion</option>
-			<option value="1">Construcción</option>
-			<option value="2">Agrícola</option>
-			<option value="3">Corte</option>
-			<option value="4">Jardinería</option>
-			<option value="5">Electrónica</option>
-			<option value="6">Carpintería</option>
-			<option value="7">Cantería</option>
-			<option value="8">Manual</option>
-			<option value="9">Portátil</option>
+			<option>Construcción</option>
+			<option>Agrícola</option>
+			<option>Corte</option>
+			<option>Jardinería</option>
+			<option>Electrónica</option>
+			<option>Carpintería</option>
+			<option>Cantería</option>
+			<option>Manual</option>
+			<option>Portátil</option>
 			</select>
-                        
-                         <input type="hidden" name="estadoprestamo" value="1">
-                         <input type="hidden" name="condicion" value="1">                        
 <br>
 			<label for="nivelAccess">Estado de la herramienta</label>
-                        <select class="form-control" name="estado">
+			<select class="form-control">
 			<option>Seleccione una opcion</option>
-                        <option value="1">Nueva</option>
-                        <option value="2">Usada</option>
+			<option>Nueva</option>
+			<option>Usada</option>
 			</select>
 
 			<br>
-                        <button type="submit" class="btn btn-primary" name="registro" value="submit">Crear registro</button>
+			<button type="submit" class="btn btn-primary">Crear registro</button>
 			</form>		
 		</div>
-                    
-<?php
-if(isset($_REQUEST["registro"])){
-        
-    $herramienta->setFecha_ingreso(date("Y-m-d H:i:s"));
-    $herramienta->setNombre_herramienta($_REQUEST["nombreHerr"]);
-    $herramienta->setId_categoria($_REQUEST["categoria"]);
-    $herramienta->setId_status_uso($_REQUEST["estado"]);
-    $herramienta->setId_status_prestamo($_REQUEST["estadoprestamo"]);
-    $herramienta->setId_condicion($_REQUEST["condicion"]);
-    $dao->insertar($herramienta);
-}
-?>
-                    
-</body>
+	</body>
 </html>
