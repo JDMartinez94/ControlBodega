@@ -19,8 +19,7 @@ session_start();
 	<body class="hub">
 	   <div id="icono">
 			<a href="index.php?estado=cerrado">
-			<img src="media/Inventool.png" alt="Icono de Inventools Control" id="icono"
-			/></a>
+			<img src="media/Inventool.png" alt="Icono de Inventools Control" id="icono"/></a>
 		</div>
 		
 		
@@ -94,12 +93,12 @@ session_start();
 			if($_SESSION["user"]["id_rol"]==1)
 			{
 				$username = $_SESSION["user"]["nombre"];
-				echo "<script>swal({title:'Exito', text:'Bienvenido: '+ '$username', type:'success'});</script>";
+				echo "<script>swal({title:'Exito', text:'Bienvenido(a): '+ '$username', type:'success'});</script>";
 			}
 			else
 			{
 				$username = $_SESSION["user"]["nombre"];
-				echo "<script>swal({title:'Exito', text:'Su usario no es administrador: '+ '$username', type:'error'}).then(function(){window.location = 'index.php'});</script>";
+				echo "<script>swal({title:'Exito', text:'Se ha iniciado sesión de forma incorrecta, por favor intente de nuevo.', type:'error'}).then(function(){window.location = 'index.php'});</script>";
 				//header("location:index.php");
 			}
         ?> 

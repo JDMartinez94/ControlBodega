@@ -32,9 +32,9 @@ if(isset($_REQUEST["cmdLoguear"])){
     }
 }
 if(isset($_REQUEST["estado"])){
-    if($_REQUEST["estado"]=="cerrar"){
+    if($_REQUEST["estado"]=="cerrado"){
         session_destroy();
-        print "Debe iniciar sesion";
+        //print "Debe iniciar sesion";
     }
 }
 ?>
