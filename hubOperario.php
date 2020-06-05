@@ -75,12 +75,12 @@ session_start();
 			if($_SESSION["user"]["id_rol"]==2)
 			{
 				$username = $_SESSION["user"]["nombre"];
-				echo "<script>swal({title:'Exito', text:'Bienvenido(a): '+ '$username', type:'success'});</script>";
+				echo "<script>swal({title:'EXITO', text:'Bienvenido(a): '+ '$username', icon:'success'});</script>";
 			}
 			else
 			{
 				$username = $_SESSION["user"]["nombre"];
-				echo "<script>swal({title:'Exito', text:'Se ha iniciado sesión de forma incorrecta, por favor intente de nuevo.', type:'error'}).then(function(){window.location = 'index.php'});</script>";
+				echo "<script>swal({title:'ERROR', text:'Se ha iniciado sesión de forma incorrecta, por favor intente de nuevo.', icon:'error'}).then(function(){window.location = 'index.php'});</script>";
 				//header("location:index.php");
 			}
         ?> 
