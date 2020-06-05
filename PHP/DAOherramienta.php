@@ -42,7 +42,7 @@ class DAOherramienta {
         $herr = new herramienta();
         $obj = $herr;
         $sql = 
-        "UPDATE platillos SET         
+        "UPDATE herramienta SET         
         fecha_ingreso = '".$obj->getFecha_ingreso()."',
         nombre_herramienta = '".$obj->getNombre_herramienta()."',
         id_categoria = ".$obj->getId_categoria().",
