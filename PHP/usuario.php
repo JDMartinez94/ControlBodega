@@ -1,13 +1,12 @@
 <?php
 
-    include 'empleado.php';
-    include 'rol.php';
-
     class usuario
     {
         private $id_usuario; 
         private $nombre_usuario; 
         private $contrasena; 
+        private $id_empleado;
+        private $id_rol; 
         
         public function __construct() {
             ;
@@ -36,6 +35,21 @@
         function setContrasena($contrasena) {
             $this->contrasena = $contrasena;
         }
+        function getId_empleado() {
+            return $this->id_empleado;
+        }
+
+        function setId_empleado($id_empleado) {
+            $this->id_empleado = $id_empleado;
+        }
+        function getId_rol() {
+            return $this->id_rol;
+        }
+        
+        function setRol($rol) {
+            $this->rol = $rol;
+        }
+
 
 
         
