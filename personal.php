@@ -3,8 +3,12 @@ session_start();
 $acceso = $_SESSION["user"]["id_rol"];
 include("PHP/formulas.php");
 include("PHP/DAOempleado.php");
-$dao = new DAOempleado();
+include("PHP/DAOusuario.php");
+$daoEmpleado = new DAOempleado();
 $empleado = new empleado();
+$daoUsuario = new DAOusuario();
+$usuario = new usuario();
+
 ?>
 
 <!DOCTYPE html>
@@ -73,8 +77,8 @@ $empleado = new empleado();
 			<label for="nivelAccess">Nivel de acceso del empleado</label>
                         <select class="form-control" name="rol">
 			<option>Seleccione una opcion</option>
-			<option>Admin</option>
-			<option>Regular</option>			
+                        <option value="1">Admin</option>
+                        <option value="2">Regular</option>			
 			</select>
                         </div>
 			<br>
@@ -85,17 +89,24 @@ $empleado = new empleado();
                     
 </div>
 <?php
-
 if(isset($_REQUEST["empleado"])){
     $empleado->setNombre_empleado($_REQUEST["nomEmp"]);
     $empleado->setDireccion($_REQUEST["dir"]);
     $empleado->setTelefono($_REQUEST["tel"]);
-    $dao->insertar($empleado);
-    echo $dao->getEmpleado();
+    $daoEmpleado->insertar($empleado);
+    echo $daoEmpleado->getEmpleado();
 }
-
-
 ?>   
+<?php
+if(isset($_REQUEST["usuario"])){
+    $usuario->setNombre_usuario($_REQUEST["nuevoUser"]);
+    $usuario->setId_empleado($_REQUEST["empID"]);
+    $usuario->setContrasena($_REQUEST["contraInic"]);
+    $usuario->setId_rol($_REQUEST["rol"]);
+    $daoUsuario->insertar($usuario);
+}
+?>
+            
             
 </body>
 </html>
