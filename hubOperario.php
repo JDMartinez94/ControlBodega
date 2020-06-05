@@ -9,6 +9,10 @@ session_start();
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="style.css" />
 		<title>Welcome to InvenTools Control</title>
+
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">		
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	</head>
 	<body class="hub">
 	<div id="icono">
@@ -66,5 +70,19 @@ session_start();
 				</div>
 			</div>
 		</div>
+
+		<?php
+			if($_SESSION["user"]["id_rol"]==2)
+			{
+				$username = $_SESSION["user"]["nombre"];
+				echo "<script>swal({title:'Exito', text:'Bienvenido(a): '+ '$username', type:'success'});</script>";
+			}
+			else
+			{
+				$username = $_SESSION["user"]["nombre"];
+				echo "<script>swal({title:'Exito', text:'Se ha iniciado sesión de forma incorrecta, por favor intente de nuevo.', type:'error'}).then(function(){window.location = 'index.php'});</script>";
+				//header("location:index.php");
+			}
+        ?> 
 	</body>
 </html>

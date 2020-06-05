@@ -1,110 +1,15 @@
 <?php
 session_start();
 $acceso = $_SESSION["user"]["id_rol"];
-function menu($acceso){
-	switch ($acceso) {
-		case '1':
-			echo "<div id='opcion'>				
-			<img
-				src='media/prestamo.png'
-				alt='prestamo'
-				width='70px'
-				height='70px'
-				id='prestamo'/>
-		</div>
-		<div id='opcion'>
-		<a href='devolucion.php'>
-			<img
-				src='media/devolucion.png'
-				alt='devolucion'
-				width='70px'
-				height='70px'/>
-		</a>
-		</div>
-		<div id='opcion'>
-		<a href='reportes.php'>
-			<img
-				src='media/reportes.png'
-				alt='reportes'
-				width='70px'
-				height='70px'/>
-		</a>
-		</div>
-		<div id='opcion'>
-		<a href='personal.php'>
-			<img
-				src='media/nuevopers.png'
-				alt='nuevopers'
-				width='70px'
-				height='70px'/>
-		</a>					
-		</div>
-		<div id='opcion'>
-		<a href='nuevasHerr.php'>
-			<img
-				src='media/nuevaherr.png'
-				alt='nuevaherr'
-				width='70px'
-				height='70px'/>
-		</a>
-		</div>
-		<div id='opcion'>
-		<a href='herrDanadas.php'>
-			<img
-				src='media/herrdanada.png'
-				alt='herrdanada'
-				width='70px'
-				height='70px'/>
-		</a>
-		</div>";
-			break;
+include("PHP/formulas.php");
+include("PHP/DAOempleado.php");
+include("PHP/DAOusuario.php");
+$daoEmpleado = new DAOempleado();
+$empleado = new empleado();
+$daoUsuario = new DAOusuario();
+$usuario = new usuario();
 
-		case '2':
-			echo "<div id='opcion'>				
-			<img
-				src='media/prestamo.png'
-				alt='prestamo'
-				width='70px'
-				height='70px'
-				id='prestamo'/>
-		</div>
-		<div id='opcion'>
-		<a href='devolucion.php'>
-			<img
-				src='media/devolucion.png'
-				alt='devolucion'
-				width='70px'
-				height='70px'/>
-		</a>
-		</div>
-	
-		<div id='opcion'>
-		<a href='nuevasHerr.php'>
-			<img
-				src='media/nuevaherr.png'
-				alt='nuevaherr'
-				width='70px'
-				height='70px'/>
-		</a>
-		</div>
-		<div id='opcion'>
-		<a href='herrDanadas.php'>
-			<img
-				src='media/herrdanada.png'
-				alt='herrdanada'
-				width='70px'
-				height='70px'/>
-		</a>
-		</div>";
-		break;		
-
-		default:
-			echo "Sesion terminada";
-			break;
-	}
-}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -130,40 +35,78 @@ function menu($acceso){
 				?>
 			</div>
 		</div>
+
 		<div id="modal">
-		<div style="width:90%; margin:auto; margin-top: 4%; background-color: white; padding: 10px;">
-		<form>			
+    <div style="width:90%; margin: auto; margin-top: 7%; background-color: white; padding: 10px; display: grid; grid-template-columns: 50% 50%; grid-template-rows: 1fr">
+        <div style=" align-self: center; justify-self: center;width:90%">	
+        <form method="POST" action="#">
+                    <h5> Registro de empleado nuevo</h5><br>
 			<div class="form-group">
 				<label for="nomEmp">Nombre del nuevo empleado</label>
-				<input type="text" class="form-control" id="nomEmp">
+				<input type="text" class="form-control" name="nomEmp">
 			</div>
 			<div class="form-group">
 				<label for="dir">Direccion del empleado</label>
-				<input type="text" class="form-control" id="dir">
+				<input type="text" class="form-control" name="dir">
 			</div>
 			<div class="form-group">
 				<label for="tel">Telefono</label>
-				<input type="text" class="form-control" id="tel">
+				<input type="text" class="form-control" name="tel">
 			</div>
-			<hr>
+                    <br>
+                    <button type="submit" class="btn btn-primary" name="empleado">Crear registro</button>
+		</form>
+        </div>
+
+        <div style=" align-self: center; justify-self: center;width:90%">
+                <form method="POST" action="#">
+                <h5>Crear un usuario</h5><br>
 			<div class="form-group">
 				<label for="nuevoUser">Nombre de usuario asignado</label>
-				<input type="text" class="form-control" id="nuevoUser">
+				<input type="text" class="form-control" name="nuevoUser">
+			</div>
+			<div class="form-group">
+				<label for="empID">ID del empleado</label>
+				<input type="text" class="form-control" name="empID">
 			</div>
 			<div class="form-group">
 				<label for="contraInic">Contraseña inicial</label>
-				<input type="text" class="form-control" id="contraInic" value="contra2020" readonly>
+				<input type="text" class="form-control" name="contraInic" value="contra2020" readonly>
 			</div>
+                        <div class="form-group">
 			<label for="nivelAccess">Nivel de acceso del empleado</label>
-			<select class="form-control">
+                        <select class="form-control" name="rol">
 			<option>Seleccione una opcion</option>
-			<option>Admin</option>
-			<option>Regular</option>			
+                        <option value="1">Admin</option>
+                        <option value="2">Regular</option>			
 			</select>
+                        </div>
 			<br>
-			<button type="submit" class="btn btn-primary">Crear registro</button>
-			</form>
-			</div>
-		</div>
-	</body>
+                        <button type="submit" class="btn btn-primary" name="usuario">Crear registro</button>
+                </form>	
+        </div>        
+    </div>                                    
+                    
+</div>
+<?php
+if(isset($_REQUEST["empleado"])){
+    $empleado->setNombre_empleado($_REQUEST["nomEmp"]);
+    $empleado->setDireccion($_REQUEST["dir"]);
+    $empleado->setTelefono($_REQUEST["tel"]);
+    $daoEmpleado->insertar($empleado);
+    echo $daoEmpleado->getEmpleado();
+}
+?>   
+<?php
+if(isset($_REQUEST["usuario"])){
+    $usuario->setNombre_usuario($_REQUEST["nuevoUser"]);
+    $usuario->setId_empleado($_REQUEST["empID"]);
+    $usuario->setContrasena($_REQUEST["contraInic"]);
+    $usuario->setId_rol($_REQUEST["rol"]);
+    $daoUsuario->insertar($usuario);
+}
+?>
+            
+            
+</body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-include("Credenciales.php");
+include("PHP/Credenciales.php");
 
 session_start();
 function existe($user,$pass){    
@@ -32,9 +32,9 @@ if(isset($_REQUEST["cmdLoguear"])){
     }
 }
 if(isset($_REQUEST["estado"])){
-    if($_REQUEST["estado"]=="cerrar"){
+    if($_REQUEST["estado"]=="cerrado"){
         session_destroy();
-        print "Debe iniciar sesion";
+        //print "Debe iniciar sesion";
     }
 }
 ?>
@@ -48,7 +48,7 @@ if(isset($_REQUEST["estado"])){
 </head>
 <body>
     <body class="hub">
-    <div class="contenedorFlex">   
+    <div class="contenedorFlex ">   
         <div class="bgMenu">
             <div class="titulo">
                 <p>InvenTools Control</p>
