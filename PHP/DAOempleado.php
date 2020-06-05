@@ -59,7 +59,7 @@ class DAOempleado {
     }
     
     public function eliminar($id_empleado){        
-        $sql="delete from empleado where id_empleado=$$id_empleado";
+        $sql="delete from empleado where id_empleado=$id_empleado";
         $this->conectar();
         if ($this->con->query($sql)){
             echo "<script>swal({title: 'Exito',text: 'El registro fue eliminado',icon: 'success'})</script>";
