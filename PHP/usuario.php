@@ -46,8 +46,8 @@
             return $this->id_rol;
         }
         
-        function setRol($rol) {
-            $this->rol = $rol;
+        function setId_rol($id_rol) {
+            $this->id_rol = $id_rol;
         }
 
 
