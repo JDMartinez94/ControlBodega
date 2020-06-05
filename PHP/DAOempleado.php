@@ -17,12 +17,12 @@ class DAOempleado {
     $this->con->close();
     }
     
-    public function getEmpleado(){
+    public function getEmpleado(){        
         $sql="select * from empleado order by id_empleado desc limit 1;";
         $this->conectar();
         $res = $this->con->query($sql);
         $this->desconectar();
-        $tabla="<table class='table'>"
+        $tabla="<div style=' position:fixed; left:35%; top:19%; background-color: white'> <table class='table'>"
                 ."<thead class='thead-dark'>";
         $tabla .="<tr>"
                     . "<th>Codigo de Empleado</th>"
@@ -38,17 +38,19 @@ class DAOempleado {
                 ."<td>".$fila["telefono"]."</td>"
                 ."</tr>";
         }
-        $tabla .="</tbody></table>";
+        $tabla .="</tbody></table> </div>";
         $res->close();
         return $tabla;
     }
     
-    public function insertar($emp){
-        $emp = new empleado();        
-        $sql="insert into empleado (nombre_empleado,direccion,telefono) values ('".$emp->getNombre_empleado()."','".$emp->getDireccion()."','".$emp->getTelefono()."');";
+    public function insertar($obj){
+        $emp = new empleado();
+        $emp = $obj;
+        $sql="insert into empleado (nombre_empleado,direccion,telefono) values ('".$obj->getNombre_empleado()."','".$obj->getDireccion()."','".$obj->getTelefono()."');";
         $this->conectar();
         if ($this->con->query($sql)){
             echo "<script>swal({title: 'Exito',text: 'El registro fue exitoso',icon: 'success'})</script>";
+            
         }else{
             echo "<script>swal({title: 'Error',text: 'Algo salio mal, el registro no se hizo',icon: 'error'})</script>";
         }
@@ -86,6 +88,3 @@ class DAOempleado {
     }
         
 }
-
-$obj = new DAOempleado();
-echo $obj->getEmpleado();
