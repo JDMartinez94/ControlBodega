@@ -1,13 +1,12 @@
 <?php
-include("credenciales.php");
 include("usuario.php");
 
-class DAOempleado {
+class DAOusuario {
     private $con;
     
     public function conectar(){
         try{
-        $this->con= new mysqli(SERVIDOR,USUARIO,CONTRA,BD) or die ("Error al conectar");    
+        $this->con= new mysqli("localhost","root","","inventools") or die ("Error al conectar");    
         } catch (Exception $ex) {
             echo $ex->getTraceAsString();
         }        
