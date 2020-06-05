@@ -1,7 +1,7 @@
 <?php
 include "mpdf/mpdf.php";
 
-funtion selectTabla(){
+function selectTabla(){
 $con = new mysqli("localhost","root","","graficos");
 //verificar en caso de error
 $sql ="select * from lucid";
@@ -20,9 +20,9 @@ $tabla .="<tr>
           <td>".$fila['nombre']."</td>
           <td>".$fila['monto_beca']."</td>
           <td>".$fila['idPatrocinador']."</td>
-          </tr>":
+          </tr>";
     }
-	$tabla .= <"table">;
+	$tabla .= "</table>";
 	return $tabla;
 }
 
