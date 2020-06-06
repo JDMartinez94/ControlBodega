@@ -23,10 +23,12 @@ if(isset($_REQUEST["cmdLoguear"])){
         $_SESSION["user"]["id_rol"]=1;
         $_SESSION["user"]["nombre"]=$user;
         header("Location:hubManager.php");
+        exit();
     }else if(existe($user,$pass)==2){
         $_SESSION["user"]["id_rol"]=2;
         $_SESSION["user"]["nombre"]=$user;
         header("location:hubOperario.php");
+        exit();
     }else if(existe($user,$pass)==0){
         $_SESSION["user"]["id_rol"]=3;
         $_SESSION["user"]["nombre"]=$user;
