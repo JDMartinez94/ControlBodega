@@ -90,7 +90,8 @@ session_start();
 			</div>
 		</div>
 
-		<?php
+		<?php   
+                        //Validación de ingreso correcto take 3
 			if($_SESSION["user"]["id_rol"]==1)
 			{
 				$username = $_SESSION["user"]["nombre"];
@@ -102,7 +103,7 @@ session_start();
 				echo "<script>swal({title:'ERROR', text:'Se ha iniciado sesión de forma incorrecta, por favor intente de nuevo.', icon:'error'}).then(function(){window.location = 'index.php'});</script>";
 				//header("location:index.php");
 			}
-        ?> 
+                ?> 
 	</body>
 
 
