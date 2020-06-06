@@ -91,7 +91,11 @@ session_start();
 		</div>
 
 		<?php   
+<<<<<<< HEAD
             //Validación de ingreso correcto take 100000
+=======
+                        //Validación de ingreso correcto take 9+
+>>>>>>> 1160a79a98d61a37bd02d250586b05002e1a8021
 			if($_SESSION["user"]["id_rol"]==1)
 			{
 				$username = $_SESSION["user"]["nombre"];
