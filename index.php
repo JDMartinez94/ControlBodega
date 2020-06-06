@@ -1,7 +1,9 @@
 <?php
-include("PHP/credenciales.php");
 
 session_start();
+include("PHP/credenciales.php");
+
+
 function existe($user,$pass){    
     $mysqli=new mysqli(SERVIDOR,USUARIO,CONTRA,BD);
     if($mysqli->connect_errno){
