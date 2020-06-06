@@ -72,7 +72,7 @@ session_start();
 		</div>
 
 		<?php
-			//version15
+			//version16
 			if($_SESSION["user"]["id_rol"]==2)
 			{
 				$username = $_SESSION["user"]["nombre"];
