@@ -1,5 +1,5 @@
 <?php
-include("PHP/Credenciales.php");
+include("PHP/credenciales.php");
 
 session_start();
 function existe($user,$pass){    
