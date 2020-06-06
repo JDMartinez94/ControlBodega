@@ -91,7 +91,7 @@ session_start();
 		</div>
 
 		<?php   
-			//Version12
+			//Version13
 			if($_SESSION["user"]["id_rol"]==1)
 			{
 				$username = $_SESSION["user"]["nombre"];
