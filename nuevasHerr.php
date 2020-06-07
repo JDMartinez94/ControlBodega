@@ -55,14 +55,15 @@ $herramienta = new herramienta();
 			</select>
                         
                          <input type="hidden" name="estadoprestamo" value="1">
-                         <input type="hidden" name="condicion" value="1">                        
+                         <input type="hidden" name="condicion" value="1">
+						 <input type="hidden" name="statusUso" value="1">                       
 <br>
-			<label for="nivelAccess">Estado de la herramienta</label>
+			<!--<label for="nivelAccess">Estado de la herramienta</label>
                         <select class="form-control" name="estado">
 			<option>Seleccione una opcion</option>
                         <option value="1">Nueva</option>
                         <option value="2">Usada</option>
-			</select>
+			</select>-->
 
 			<br>
                         <button type="submit" class="btn btn-primary" name="registro" value="submit">Crear registro</button>
@@ -75,7 +76,7 @@ if(isset($_REQUEST["registro"])){
     $herramienta->setFecha_ingreso(date("Y-m-d H:i:s"));
     $herramienta->setNombre_herramienta($_REQUEST["nombreHerr"]);
     $herramienta->setId_categoria($_REQUEST["categoria"]);
-    $herramienta->setId_status_uso($_REQUEST["estado"]);
+    $herramienta->setId_status_uso($_REQUEST["statusUso"]);
     $herramienta->setId_status_prestamo($_REQUEST["estadoprestamo"]);
     $herramienta->setId_condicion($_REQUEST["condicion"]);
     $dao->insertar($herramienta);
