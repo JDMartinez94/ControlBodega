@@ -2,6 +2,9 @@
 session_start();
 $acceso = $_SESSION["user"]["id_rol"];
 include("PHP/formulas.php");
+include("PHP/DAOregistro.php");
+$dao = new DAOregistro();
+$prestamo = new registro();
 ?>
 
 <!DOCTYPE html>
@@ -29,28 +32,41 @@ include("PHP/formulas.php");
 			</div>
 		</div>
 		<div id="modal">
-		<div style="width:90%; margin:auto; margin-top: 5%; background-color: white; padding: 10px;">
+		<div style="width:90%; margin:auto; margin-top: 4%; background-color: white; padding: 10px;">
 		<form>
 			<div class="form-group">
 				<label for="tipoTransac">Tipo de transaccion</label>
-				<input class="form-control" type="text" placeholder="Prestamo" readonly>
+                                <input class="form-control" type="text" placeholder="Prestamo" readonly name="transac">
 			</div>
 			<div class="form-group">
 				<label for="codigoHerr">Codigo de la herramienta</label>
-				<input type="text" class="form-control" id="codigoHerr">
+				<input type="text" class="form-control" name="codigoHerr">
 			</div>
 			<div class="form-group">
 				<label for="idEmp">Codigo del empleado prestamista</label>
-				<input type="text" class="form-control" id="idEmp">
+				<input type="text" class="form-control" name="idEmp">
 			</div>
 			<div class="form-group">
 				<label for="idUser">Registro creado por</label>
-				<input type="text" class="form-control" id="idUser" placeholder="Codigo de empleado del usuario">
+				<input type="text" class="form-control" name="idUser" placeholder="Codigo de empleado del usuario">
 			</div>
 			<br>
-			<button type="submit" class="btn btn-primary">Crear registro</button>
+                        <button type="submit" class="btn btn-primary" name="crearReg">Crear registro</button>
 			</form>
 			</div>
 		</div>
-	</body>
+<?php
+if(isset($_REQUEST["crearReg"])){
+    $prestamo->setFecha_registro(date("Y-m-d H:i:s"));
+    $prestamo->setId_tipo_registro("1");
+    $prestamo->setCodigo_herramienta($_REQUEST["codigoHerr"]);
+    $prestamo->setId_empleado($_REQUEST["idEmp"]);
+    $prestamo->setId_usuario($_REQUEST["idUser"]);
+    $dao->registrar($prestamo);
+    echo $dao->getRegistro();
+}
+?>
+
+
+</body>
 </html>
