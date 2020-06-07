@@ -2,6 +2,10 @@
 session_start();
 $acceso = $_SESSION["user"]["id_rol"];
 include("PHP/formulas.php");
+include ("PHP/DAOcondicion.php");
+$dao = new DAOcondicion();
+$estado = new herramienta();
+
 ?>
 
 <!DOCTYPE html>
@@ -30,20 +34,36 @@ include("PHP/formulas.php");
 		</div>
 
 		<div id="modal">			
-		<div style="width:90%; margin:auto; margin-top: 12%; background-color: white; padding: 10px;">
+		<div style="width:90%; margin:auto; margin-top: 5%; background-color: white; padding: 10px;">
 		<form>
 			<div class="form-group">
 				<label for="codigoHerr">Codigo de la herramienta</label>
-				<input type="text" class="form-control" id="codigoHerr">
+				<input type="text" class="form-control" name="codigoHerr">
 			</div>
 			<div class="form-group">
-				<label for="fechaDano">Fecha de reporte de daño</label>
-				<input type="date" class="form-control" id="fechaDano">				
+			<label for="estado">Estado de la herramienta</label>
+                        <select class="form-control" name="estado">
+			<option>Seleccione una opcion</option>
+                        <option value="1">Reparada</option>
+                        <option value="2">Dañada</option>
+			</select>
 			</div>			
 			<br>
-			<button type="submit" class="btn btn-primary">Crear registro</button>
+			<button type="submit" class="btn btn-primary" name="cambiarEstado">Crear registro</button>
 			</form>		
 		</div>
 		</div>
+<?php
+if(isset($_REQUEST["cambiarEstado"])){
+    $codigo=($_REQUEST["codigoHerr"]);
+    $estado->setId_condicion($_REQUEST["estado"]);
+    $dao->estadoHerramienta($estado, $codigo);
+    echo $dao->getHerramienta($codigo);
+}
+
+
+
+?>
+
 	</body>
 </html>

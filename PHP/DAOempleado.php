@@ -1,5 +1,4 @@
 <?php
-include("credenciales.php");
 include("empleado.php");
 
 class DAOempleado {
@@ -7,7 +6,7 @@ class DAOempleado {
     
     public function conectar(){
         try{
-        $this->con= new mysqli(SERVIDOR,USUARIO,CONTRA,BD) or die ("Error al conectar");    
+            $this->con= new mysqli("localhost","root","","inventools") or die ("Error al conectar");    
         } catch (Exception $ex) {
             echo $ex->getTraceAsString();
         }        
@@ -22,7 +21,7 @@ class DAOempleado {
         $this->conectar();
         $res = $this->con->query($sql);
         $this->desconectar();
-        $tabla="<div style=' position:fixed; left:35%; top:19%; background-color: white'> <table class='table'>"
+        $tabla="<div style=' position:fixed; left:35%; top:22%; background-color: white'> <table class='table'>"
                 ."<thead class='thead-dark'>";
         $tabla .="<tr>"
                     . "<th>Codigo de Empleado</th>"

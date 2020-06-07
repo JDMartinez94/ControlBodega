@@ -37,7 +37,7 @@ $usuario = new usuario();
 		</div>
 
 		<div id="modal">
-    <div style="width:90%; margin: auto; margin-top: 7%; background-color: white; padding: 10px; display: grid; grid-template-columns: 50% 50%; grid-template-rows: 1fr">
+    <div style="width:90%; margin: auto; margin-top: 10%; background-color: white; padding: 10px; display: grid; grid-template-columns: 50% 50%; grid-template-rows: 1fr">
         <div style=" align-self: center; justify-self: center;width:90%">	
         <form method="POST" action="#">
                     <h5> Registro de empleado nuevo</h5><br>
@@ -73,7 +73,7 @@ $usuario = new usuario();
 				<label for="contraInic">Contraseña inicial</label>
 				<input type="text" class="form-control" name="contraInic" value="contra2020" readonly>
 			</div>
-                        <div class="form-group">
+			<div class="form-group">
 			<label for="nivelAccess">Nivel de acceso del empleado</label>
                         <select class="form-control" name="rol">
 			<option>Seleccione una opcion</option>

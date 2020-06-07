@@ -31,10 +31,6 @@ include("PHP/formulas.php");
 		<div id="modal">
 		<div style="width:90%; margin:auto; margin-top: 5%; background-color: white; padding: 10px;">
 		<form>
-		<div class="form-group">
-				<label for="fechaTransac">Fecha de transaccion</label>
-				<input type="date" class="form-control" id="fechaTransac">				
-			</div>
 			<div class="form-group">
 				<label for="tipoTransac">Tipo de transaccion</label>
 				<input class="form-control" type="text" placeholder="Prestamo" readonly>
