@@ -8,7 +8,6 @@ $daoEmpleado = new DAOempleado();
 $empleado = new empleado();
 $daoUsuario = new DAOusuario();
 $usuario = new usuario();
-
 ?>
 
 <!DOCTYPE html>
