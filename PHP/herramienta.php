@@ -1,9 +1,5 @@
 <?php
     
-    include 'categoria.php';
-    include 'status_uso.php';
-    include 'status_prestamo.php';
-    include 'condicion.php'; 
     
     class herramienta
     {

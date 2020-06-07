@@ -1,5 +1,4 @@
 <?php
-include("credenciales.php");
 include("herramienta.php");
 
 class DAOherramienta {
@@ -7,7 +6,7 @@ class DAOherramienta {
     
     public function conectar(){
         try{
-        $this->con= new mysqli(SERVIDOR,USUARIO,CONTRA,BD) or die ("Error al conectar");    
+        $this->con= new mysqli("localhost","root","","inventools") or die ("Error al conectar");    
         } catch (Exception $ex) {
             echo $ex->getTraceAsString();
         }
@@ -57,7 +56,7 @@ class DAOherramienta {
         }else{
             echo "<script>swal({title:'Error',text:'El registro no fue modificado',icon:'error'})</script>";
         }
-        $this->desconectar();        
+        $this->desconectar();
     }
 }
 
