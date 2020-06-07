@@ -127,7 +127,9 @@ Insert into tipo_registro values
 Insert into empleado (nombre_empleado, direccion, telefono) values
 ('Gloria Andrea Chacon Castillo', '123 Calle Itca, Sta. Tecla, La Libertad', '2222-3333'),
 ('Josué Daniel Martínez Sánchez', '456 Calle Itca, Sta. Tecla, La Libertad', '2222-4444'),
-('Alcides José Medina Avelar', '789 Calle Itca, Sta. Tecla, La Libertad', '2222-5555');
+('Alcides José Medina Avelar', '789 Calle Itca, Sta. Tecla, La Libertad', '2222-5555'),
+('Carlos Antonio Mena Gómez', '789 Calle Itca, Sta. Tecla, La Libertad', '2222-6666'),
+('Gracia María Montoya Cruz', '789 Calle Itca, Sta. Tecla, La Libertad', '2222-7777');
 
 Insert into usuario (nombre_usuario, contrasena, id_empleado, id_rol) values
 ('achacon', 'a12345', '1', '1'),
