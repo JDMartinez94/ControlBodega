@@ -147,8 +147,25 @@ Insert into categoria (nombre_categoria) values
 ('Herramientas Manuales'),
 ('Herramientas Portátiles');
 
-
-
+Insert into herramienta (fecha_ingreso, nombre_herramienta, id_categoria, id_status_uso, id_status_prestamo, id_condicion) values
+('2020-04-10 05:15:14', 'Martillo',1,1,1,1),
+('2020-01-05 13:21:18', 'Cincel',1,2,1,1),
+('2020-02-20 08:09:11', 'Yugo',2,2,2,1),
+('2020-03-01 15:15:15', 'Descompactador',2,2,1,2),
+('2020-04-11 10:55:23', 'Tenaza',3,2,1,2),
+('2020-05-30 11:40:01', 'Cortapuros',3,1,1,1),
+('2019-12-09 06:02:33', 'Podadora',4,2,1,1),
+('2020-01-22 18:39:44', 'Pala',4,2,2,1),
+('2019-11-14 12:36:13', 'Ponchadora',5,2,1,2),
+('2020-02-23 09:49:08', 'Cable Puente',5,2,1,2),
+('2019-08-02 07:56:45', 'Escuadra',6,1,1,1),
+('2019-10-23 09:10:00', 'Sierra de mano',6,2,1,1),
+('2020-05-07 19:58:18', 'Taladro',7,2,2,1),
+('2020-03-31 13:13:14', 'Bujarda',7,2,1,2),
+('2019-10-31 21:00:02', 'Espátula',8,2,1,2),
+('2020-06-01 05:03:59', 'Alicate',8,1,1,1),
+('2019-09-28 16:01:00', 'Cuchillo de Bolsillo',9,2,1,1),
+('2020-06-01 15:50:51', 'Plumas',9,2,2,1);
 
 
 
