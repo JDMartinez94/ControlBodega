@@ -62,13 +62,15 @@ function menu($acceso){
 			break;
 
 		case '2':
-			echo "<div id='opcion'>				
+			echo "<div id='opcion'>	
+		 <a href='prestamo.php'>			
 			<img
 				src='media/prestamo.png'
 				alt='prestamo'
 				width='70px'
 				height='70px'
 				id='prestamo'/>
+		</a>
 		</div>
 		<div id='opcion'>
 		<a href='devolucion.php'>
@@ -79,7 +81,7 @@ function menu($acceso){
 				height='70px'/>
 		</a>
 		</div>
-	
+		
 		<div id='opcion'>
 		<a href='nuevasHerr.php'>
 			<img
