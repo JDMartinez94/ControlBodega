@@ -68,12 +68,13 @@ echo $id;
 		</div>
 <?php
 if(isset($_REQUEST["crearReg"])){
+	$transaccion = 2;
     $prestamo->setFecha_registro(date("Y-m-d H:i:s"));
     $prestamo->setId_tipo_registro("2");
     $prestamo->setCodigo_herramienta($_REQUEST["codigoHerr"]);
     $prestamo->setId_empleado($_REQUEST["idEmp"]);
     $prestamo->setId_usuario($id);
-    $dao->registrar($prestamo);
+    $dao->registrar($prestamo,$transaccion);
     echo $dao->getRegistro();
 }
 ?>
