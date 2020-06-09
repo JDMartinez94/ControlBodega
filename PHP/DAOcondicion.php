@@ -25,7 +25,7 @@ class DAOcondicion{
     
         $this->conectar();
         if ($this->con->query($sql)){
-            echo "<script>swal({title:'Exito',text:'El estado de la herramienta fue actualizado',icon:'success'})</script>";
+            echo "<script>swal({title:'Exito',text:'El estado de la herramienta fue actualizado',icon:'success', closeOnConfirm: false}).then(function(){window.location = 'herrDanadas.php'})</script>";
         }else{
             echo "<script>swal({title:'Error',text:'El estado de la herramienta no se pudo actualizar',icon:'error'})</script>";
         }

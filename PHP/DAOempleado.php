@@ -48,7 +48,7 @@ class DAOempleado {
         $sql="insert into empleado (nombre_empleado,direccion,telefono) values ('".$obj->getNombre_empleado()."','".$obj->getDireccion()."','".$obj->getTelefono()."');";
         $this->conectar();
         if ($this->con->query($sql)){
-            echo "<script>swal({title: 'Exito',text: 'El registro fue exitoso',icon: 'success'})</script>";
+            echo "<script>swal({title: 'Exito',text: 'El registro fue exitoso',icon: 'success', closeOnConfirm: false}).then(function(){window.location = 'personal.php'})</script>";
             
         }else{
             echo "<script>swal({title: 'Error',text: 'Algo salio mal, el registro no se hizo',icon: 'error'})</script>";
