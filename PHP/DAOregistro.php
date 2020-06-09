@@ -16,14 +16,16 @@ class DAOregistro{
     $this->con->close();
     }
     
-    public function registrar($obj){
+    public function registrar($obj,$transaccion){
         $prestamo = new registro();
         $prestamo = $obj;
         $sql = "insert into registro (fecha_registro,id_tipo_registro,codigo_herramienta,id_empleado,id_usuario)"
-                . "values ('".$obj->getFecha_registro()."',".$obj->getId_tipo_registro().",".$obj->getCodigo_herramienta().",".$obj->getId_empleado().",".$obj->getId_usuario().");";
+                . "select '".$obj->getFecha_registro()."',".$obj->getId_tipo_registro().",".$obj->getCodigo_herramienta().",".$obj->getId_empleado().",".$obj->getId_usuario().""
+                . " where (select id_status_prestamo from herramienta where codigo_herramienta = ".$obj->getCodigo_herramienta().") = $transaccion;";
         $this->conectar();
-        if ($this->con->query($sql)){
-            echo "<script>swal({title: 'Exito',text: 'El prestamo fue registrado',icon: 'success', closeOnConfirm: false}).then(function(){window.location = 'prestamo.php'})</script>";
+        $this->con->query($sql);
+        if ($this->con->affected_rows>0){
+            echo "<script>swal({title: 'Exito',text: 'El prestamo fue registrado',icon: 'success'})</script>";
             
         }else{
             echo "<script>swal({title: 'Error',text: 'Algo salio mal, no se registro el prestamo',icon: 'error'})</script>";
