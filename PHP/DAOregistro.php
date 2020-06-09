@@ -45,7 +45,7 @@ class DAOregistro{
         $this->conectar();
         $res = $this->con->query($sql);
         $this->desconectar();
-        $tabla="<div style=' position:fixed; left:35%; top:75%; background-color: white; border-radius: 20px '>"
+        $tabla="<div style=' position:fixed; left:600px; top:700px; background-color: white; border-radius: 20px '>"
                 . "<h3 style=' text-align: center'>Detalles del registro</h3>"
                 . "<table class='table'>"
                 ."<thead class='thead-dark'>";
