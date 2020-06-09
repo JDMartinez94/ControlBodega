@@ -16,6 +16,9 @@ if (strcmp($script_tz, ini_get('date.timezone'))){
     echo 'La zona horaria del script y la zona horaria de la configuración ini coinciden.';
 }
 
+$id = $_SESSION["user"]["id_usuario"];
+echo $id;
+
 ?>
 
 <!DOCTYPE html>
@@ -58,10 +61,6 @@ if (strcmp($script_tz, ini_get('date.timezone'))){
 				<label for="idEmp">Codigo del empleado que devuelve la herramienta</label>
 				<input type="text" class="form-control" name="idEmp">
 			</div>
-			<div class="form-group">
-				<label for="idUser">Registro creado por</label>
-				<input type="text" class="form-control" name="idUser" placeholder="Codigo de empleado del usuario">
-			</div>
 			<br>
                         <button type="submit" class="btn btn-primary" name="crearReg">Crear registro</button>
 			</form>
@@ -73,7 +72,7 @@ if(isset($_REQUEST["crearReg"])){
     $prestamo->setId_tipo_registro("2");
     $prestamo->setCodigo_herramienta($_REQUEST["codigoHerr"]);
     $prestamo->setId_empleado($_REQUEST["idEmp"]);
-    $prestamo->setId_usuario($_REQUEST["idUser"]);
+    $prestamo->setId_usuario($id);
     $dao->registrar($prestamo);
     echo $dao->getRegistro();
 }
