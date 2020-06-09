@@ -22,7 +22,7 @@ class DAOherramienta {
         ."values('".$obj->getFecha_ingreso()."','".$obj->getNombre_herramienta()."',".$obj->getId_categoria().",".$obj->getId_status_uso().",".$obj->getId_status_prestamo().",".$obj->getId_condicion().");";
         $this->conectar();
         if ($this->con->query($sql)){
-            echo "<script>swal({title: 'Exito',text: 'El registro fue exitoso',icon: 'success'})</script>";
+            echo "<script>swal({title: 'Exito',text: 'El registro fue exitoso',icon: 'success', closeOnConfirm: false}).then(function(){window.location = 'nuevasHerr.php'})</script>";
         }else{
             echo "<script>swal({title: 'Error',text: 'Algo salio mal, el registro no se hizo',icon: 'error'})</script>";
         }

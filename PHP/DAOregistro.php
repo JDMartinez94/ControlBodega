@@ -23,7 +23,7 @@ class DAOregistro{
                 . "values ('".$obj->getFecha_registro()."',".$obj->getId_tipo_registro().",".$obj->getCodigo_herramienta().",".$obj->getId_empleado().",".$obj->getId_usuario().");";
         $this->conectar();
         if ($this->con->query($sql)){
-            echo "<script>swal({title: 'Exito',text: 'El prestamo fue registrado',icon: 'success'})</script>";
+            echo "<script>swal({title: 'Exito',text: 'El prestamo fue registrado',icon: 'success', closeOnConfirm: false}).then(function(){window.location = 'prestamo.php'})</script>";
             
         }else{
             echo "<script>swal({title: 'Error',text: 'Algo salio mal, no se registro el prestamo',icon: 'error'})</script>";
