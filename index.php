@@ -9,18 +9,20 @@ function existe($user,$pass){
     if($mysqli->connect_errno){
         print "Error al conectar ".$mysqli->connect_error;
     }
-    $sql="SELECT id_rol FROM usuario WHERE nombre_usuario = '".$user."' and contrasena = '".$pass."'";
+    $sql="SELECT id_usuario, id_rol FROM usuario WHERE nombre_usuario = '".$user."' and contrasena = '".$pass."'";
     
     $res = $mysqli->query($sql);
     $fila=mysqli_fetch_row($res);
-    $id_rol = $fila[0];
-    return $id_rol;
+    $id_usuario = $fila[0];
+    $id_rol = $fila[1];
+    $credenciales = array($id_usuario, $id_rol);
+    return $credenciales;
 }
 if(isset($_REQUEST["cmdLoguear"])){
     $user=$_REQUEST["txtUsuario"];
     $pass=$_REQUEST["txtContrasena"];
 
-    $sql = "select nombre_usuario, contrasena from usuario where nombre_usuario='$user' and contrasena='$pass'";
+    $sql = "select id_rol from usuario where nombre_usuario='$user' and contrasena='$pass'";
 
     try
     {
@@ -36,20 +38,25 @@ if(isset($_REQUEST["cmdLoguear"])){
         {
                 if($cant==1)
             {
-                if(existe($user,$pass)==1)
+                $credenciales = existe($user,$pass);
+                
+                if($credenciales[1]==1)
                 {
                     $_SESSION["user"]["id_rol"]=1;
+                    $_SESSION["user"]["id_usuario"]=$credenciales[0];
                     $_SESSION["user"]["nombre"]=$user;
                     header("Location:hubManager.php");
                     exit();
                 }
-                else if(existe($user,$pass)==2)
+                else if($credenciales[1]==2)
                 {
                     $_SESSION["user"]["id_rol"]=2;
+                    $_SESSION["user"]["id_usuario"]=$credenciales[0];
                     $_SESSION["user"]["nombre"]=$user;
                     header("location:hubOperario.php");
                     exit();
-                }
+                
+            }
             }
             else
             {
