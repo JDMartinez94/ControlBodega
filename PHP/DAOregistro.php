@@ -25,10 +25,10 @@ class DAOregistro{
         $this->conectar();
         $this->con->query($sql);
         if ($this->con->affected_rows>0){
-            echo "<script>swal({title: 'Exito',text: 'El prestamo fue registrado',icon: 'success'})</script>";
+            echo "<script>swal({title: 'Exito',text: 'El registro se realizo con exito',icon: 'success'})</script>";
             
         }else{
-            echo "<script>swal({title: 'Error',text: 'Algo salio mal, no se registro el prestamo',icon: 'error'})</script>";
+            echo "<script>swal({title: 'Error',text: 'Algo salio mal, no se pudo realizar el registro',icon: 'error'})</script>";
         }
         $this->desconectar();
     }
