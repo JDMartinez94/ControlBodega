@@ -21,7 +21,7 @@ class DAOregistro{
         $prestamo = $obj;
         $sql = "insert into registro (fecha_registro,id_tipo_registro,codigo_herramienta,id_empleado,id_usuario)"
                 . "select '".$obj->getFecha_registro()."',".$obj->getId_tipo_registro().",".$obj->getCodigo_herramienta().",".$obj->getId_empleado().",".$obj->getId_usuario().""
-                . " where (select id_status_prestamo from herramienta where codigo_herramienta = ".$obj->getCodigo_herramienta().") = $transaccion;";
+                . " where (select id_status_prestamo from herramienta where id_condicion = 1 and codigo_herramienta = ".$obj->getCodigo_herramienta().") = $transaccion;";
         $this->conectar();
         $this->con->query($sql);
         if ($this->con->affected_rows>0){
