@@ -1,7 +1,7 @@
 <?php
+include("credenciales.php");
 
-
-class reportes {
+class DAOreportes{
     private $con;
     
     public function conectar(){
@@ -16,12 +16,14 @@ class reportes {
     $this->con->close();
     }
 
-    public function defectuosas(){
-        $sql="select * from herramienta where id_condicion = 2;";
+    public function reportesHerr($filtro,$titulo){
+        $sql="select * from herramienta where ".$filtro.";";
         $this->conectar();
         $res = $this->con->query($sql);
         $this->desconectar();
-        $tabla="<table class='table'>"
+        $tabla="<div style='margin: auto; width: 80%; background-color: white'>"
+                . "<h3 style=' text-align: center'>".$titulo."</h3>"
+                . "<table class='table'>"
                 ."<thead class='thead-dark'>";
         $tabla .="<tr>"
                     . "<th>Codigo de la herramienta</th>"
@@ -42,7 +44,7 @@ class reportes {
                 ."<td>".$fila["id_status_uso"]."</td>"
                 ."<td>".$fila["id_status_prestamo"]."</td>"
                 ."<td>".$fila["id_condicion"]."</td>"
-                ."<td><button type='button' class='btn btn-warning'>Seleccionar</button></td>"
+                ."<td><button type='button' class='btn btn-info'>Seleccionar</button></td>"
                 ."</tr>";
         }
         $tabla .="</tbody></table></div>";
