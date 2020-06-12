@@ -48,3 +48,6 @@ join herramienta h on h.codigo_herramienta = r.codigo_herramienta
 join empleado e on e.id_empleado = r.id_empleado
 join usuario u on u.id_usuario = r.id_usuario
 where r.id_tipo_registro = 1; 
+
+
+

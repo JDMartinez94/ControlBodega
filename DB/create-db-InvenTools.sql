@@ -167,13 +167,35 @@ Insert into herramienta (fecha_ingreso, nombre_herramienta, id_categoria, id_sta
 ('2019-09-28 16:01:00', 'Cuchillo de Bolsillo',9,2,1,1),
 ('2020-06-01 15:50:51', 'Plumas',9,2,2,1);
 
+insert into registro (fecha_registro, id_tipo_registro, codigo_herramienta, id_empleado, id_usuario) values
+("2020-01-11 19:48:26", 1, 1, 4, 1), 
+("2020-02-20 10:22:45", 1, 10, 5, 2), 
+("2020-01-20 09:30:15", 2, 1, 4, 3), 
+("2020-04-05 12:00:01", 1, 18, 4, 1), 
+("2020-03-01 15:11:08", 2, 10, 5, 2), 
+("2020-06-11 21:55:01", 2, 18, 4, 3);
 
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
+-- STORED PROCEDURES
 
+-- SP para ingresar registritros de préstamos
+DELIMITER // ;
+ Create PROCEDURE InsertarNuevoPrestamo(IN p_fecha_ingreso datetime, IN p_id_tipo_registro int, IN p_codigo_herramienta int, IN p_id_empleado int, IN p_id_usuario int)
+ BEGIN
+ insert into registro (fecha_registro, id_tipo_registro, codigo_herramienta, id_empleado, id_usuario) values (p_fecha_ingreso, p_id_tipo_registro, p_codigo_herramienta, p_id_empleado, p_id_usuario);
+ update herramienta set id_status_uso = 2 where codigo_herramienta = p_codigo_herramienta; 
+ update herramienta set id_status_prestamo = 2 where codigo_herramienta = p_codigo_herramienta; 
+END // ;
 
-
-
-
+-- SP para ingresar registritros de devoluciones
+DELIMITER // ;
+ Create PROCEDURE InsertarNuevaDevolucion(IN p_fecha_ingreso datetime, IN p_id_tipo_registro int, IN p_codigo_herramienta int, IN p_id_empleado int, IN p_id_usuario int)
+ BEGIN
+ insert into registro (fecha_registro, id_tipo_registro, codigo_herramienta, id_empleado, id_usuario) values (p_fecha_ingreso, p_id_tipo_registro, p_codigo_herramienta, p_id_empleado, p_id_usuario);
+ update herramienta set id_status_prestamo = 1 where codigo_herramienta = p_codigo_herramienta; 
+END // ;
 
 
 
