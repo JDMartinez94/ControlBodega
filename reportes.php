@@ -55,23 +55,23 @@ $reporte = new DAOreportes();
                 <?php
                 if(isset($_REQUEST["herrDef"])){
                     $titulo = "Herramientas defectuosas";
-                    $fltro = "id_condicion = 2";
-                    echo $reporte->reportesHerr($fltro,$titulo);
+                    $filtro = "h.id_condicion = 2";
+                    echo $reporte->reportesHerr($filtro,$titulo);
                 }
                 if(isset($_REQUEST["herrNuev"])){
                     $titulo = "Herramientas nuevas";
-                    $fltro = "id_status_uso = 1";
-                    echo $reporte->reportesHerr($fltro,$titulo);
+                    $filtro = "h.id_status_uso = 1";
+                    echo $reporte->reportesHerr($filtro,$titulo);
                 }
                 if(isset($_REQUEST["herrUso"])){
                     $titulo = "Herramientas en uso";
-                    $fltro = "id_status_prestamo = 2";
-                    echo $reporte->reportesHerr($fltro,$titulo);
+                    $filtro = "h.id_status_prestamo = 2";
+                    echo $reporte->reportesHerr($filtro,$titulo);
                 }
                 if(isset($_REQUEST["herrDisp"])){
                     $titulo = "Herramientas disponibles";
-                    $fltro = "id_status_prestamo = 1 and id_condicion = 1";
-                    echo $reporte->reportesHerr($fltro,$titulo);
+                    $filtro = "h.id_status_prestamo = 1 and h.id_condicion = 1";
+                    echo $reporte->reportesHerr($filtro,$titulo);
                 }
                 
                 ?>
