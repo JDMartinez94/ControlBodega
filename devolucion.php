@@ -39,36 +39,36 @@ echo $id;
 		</div>
 
 		<div id="modal">
-		<div style="width:90%; margin:auto; margin-top: 4%; background-color: white; padding: 10px;">
-		<form>
-			<div class="form-group">
-				<label for="tipoTransac">Tipo de transaccion</label>
-				<input class="form-control" type="text" placeholder="Devolucion" readonly>
+			<div style="width:90%; margin:auto; background-color: white; padding: 15px;">
+			<form>
+				<div class="form-group">
+					<label for="tipoTransac">Tipo de transaccion</label>
+					<input class="form-control" type="text" placeholder="Devolucion" readonly>
+				</div>
+				<div class="form-group">
+					<label for="codigoHerr">Codigo de la herramienta</label>
+					<input type="text" class="form-control" name="codigoHerr">
+				</div>
+				<div class="form-group">
+					<label for="idEmp">Codigo del empleado que devuelve la herramienta</label>
+					<input type="text" class="form-control" name="idEmp">
+				</div>
+				<br>
+							<button type="submit" class="btn btn-primary" name="crearReg">Crear registro</button>
+				</form>
 			</div>
-			<div class="form-group">
-				<label for="codigoHerr">Codigo de la herramienta</label>
-				<input type="text" class="form-control" name="codigoHerr">
-			</div>
-			<div class="form-group">
-				<label for="idEmp">Codigo del empleado que devuelve la herramienta</label>
-				<input type="text" class="form-control" name="idEmp">
-			</div>
-			<br>
-                        <button type="submit" class="btn btn-primary" name="crearReg">Crear registro</button>
-			</form>
-			</div>
+			<?php
+			if(isset($_REQUEST["crearReg"])){
+				$transaccion = 2;
+				$prestamo->setFecha_registro(date("Y-m-d H:i:s"));
+				$prestamo->setId_tipo_registro("2");
+				$prestamo->setCodigo_herramienta($_REQUEST["codigoHerr"]);
+				$prestamo->setId_empleado($_REQUEST["idEmp"]);
+				$prestamo->setId_usuario($id);
+				$dao->registrar($prestamo,$transaccion);
+				echo $dao->getRegistro();
+			}
+			?>
 		</div>
-<?php
-if(isset($_REQUEST["crearReg"])){
-	$transaccion = 2;
-    $prestamo->setFecha_registro(date("Y-m-d H:i:s"));
-    $prestamo->setId_tipo_registro("2");
-    $prestamo->setCodigo_herramienta($_REQUEST["codigoHerr"]);
-    $prestamo->setId_empleado($_REQUEST["idEmp"]);
-    $prestamo->setId_usuario($id);
-    $dao->registrar($prestamo,$transaccion);
-    echo $dao->getRegistro();
-}
-?>
 </body>
 </html>

@@ -64,10 +64,8 @@ body {
 	grid-row: 2/3;
 	background-color: rgba(177, 169, 177, 0.609);
 	width: 90%;
-	height: 1fr;
 	padding: 5px;
 	justify-self: center;
 	align-self: center;
 	border-radius: 25px;
-	overflow: hidden;
 }

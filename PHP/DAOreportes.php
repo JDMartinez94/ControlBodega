@@ -21,7 +21,7 @@ class DAOreportes{
         $this->conectar();
         $res = $this->con->query($sql);
         $this->desconectar();
-        $tabla="<div style='margin: auto; width: 80%; background-color: white'>"
+        $tabla="<br><div style='margin: auto; width: 90%; background-color: white; padding: 15px'>"
                 . "<h3 style=' text-align: center'>".$titulo."</h3>"
                 . "<table class='table'>"
                 ."<thead class='thead-dark'>";
@@ -33,7 +33,6 @@ class DAOreportes{
                     . "<th>Estado de uso</th>"
                     . "<th>Estado de prestamo</th>"
                     . "<th>Condicion</th>"
-                    . "<th>Seleccionar</th>"
                 . "</tr></thead><tbody>";
         while ($fila = mysqli_fetch_assoc($res)){
         $tabla .="<tr>"
@@ -44,15 +43,118 @@ class DAOreportes{
                 ."<td>".$fila["status_uso"]."</td>"
                 ."<td>".$fila["status_prestamo"]."</td>"
                 ."<td>".$fila["condicion"]."</td>"
-                ."<td><button type='button' class='btn btn-info'>Seleccionar</button></td>"
                 ."</tr>";
         }
-        $tabla .="</tbody></table></div>";
+        $tabla .="</tbody></table>"
+        ."<center><button type='button' class='btn btn-info' name='imprimir'>Imprimir reporte</button></center></div>";
         $res->close();
         return $tabla;
     }
 
+    public function historial(){
+        $sql="select r.id_registro, r.fecha_registro, tr.tipo_registro, r.codigo_herramienta, h.nombre_herramienta, r.id_empleado, e.nombre_empleado, r.id_usuario, u.nombre_usuario from registro r join tipo_registro tr on tr.id_tipo_registro = r.id_tipo_registro join herramienta h on h.codigo_herramienta = r.codigo_herramienta join empleado e on e.id_empleado = r.id_empleado join usuario u on u.id_usuario = r.id_usuario where r.id_tipo_registro = 1;";
+        $this->conectar();
+        $res = $this->con->query($sql);
+        $this->desconectar();
+        $tabla="<br><div style='margin: auto; width: 90%; background-color: white; padding: 15px'>"
+                ."<h3 style=' text-align: center'>Historial general de prestamos</h3>"
+                ."<table class='table'>"
+                ."<thead class='thead-dark'>";
+        $tabla .="<tr>"
+                    . "<th>ID Registro</th>"
+                    . "<th>Fecha de registro</th>"
+                    . "<th>Tipo de registro</th>"
+                    . "<th>Codigo de herramienta</th>"
+                    . "<th>Nombre de la herramienta</th>"
+                    . "<th>ID empleado prestamista</th>"
+                    . "<th>Nombre de empleado prestamista</th>"
+                    . "<th>ID Usuario que registro</th>"
+                    . "<th>Usuario que registro</th>"
+                . "</tr></thead><tbody>";
+        while ($fila = mysqli_fetch_assoc($res)){
+        $tabla .="<tr>"
+                ."<td>".$fila["id_registro"]."</td>"
+                ."<td>".$fila["fecha_registro"]."</td>"
+                ."<td>".$fila["tipo_registro"]."</td>"
+                ."<td>".$fila["codigo_herramienta"]."</td>"
+                ."<td>".$fila["nombre_herramienta"]."</td>"
+                ."<td>".$fila["id_empleado"]."</td>"
+                ."<td>".$fila["nombre_empleado"]."</td>"
+                ."<td>".$fila["id_usuario"]."</td>"
+                ."<td>".$fila["nombre_usuario"]."</td>"
+                ."</tr>";
+        }
+        $tabla .="</tbody></table>"
+        ."<center><button type='button' class='btn btn-info' name='imprimir'>Imprimir reporte</button></center></div>";
+        $res->close();
+        return $tabla;
+    }
 
+    public function herramientas(){
+        $sql="select * from herramienta;";
+        $this->conectar();
+        $res = $this->con->query($sql);
+        $this->desconectar();
+        $tabla="<br><div style='margin: auto; width: 90%; background-color: white; padding: 15px'>"
+                ."<h3 style=' text-align: center'>Contenido de la tabla herramienta</h3>"
+                ."<table class='table'>"
+                ."<thead class='thead-dark'>";
+        $tabla .="<tr>"
+                    . "<th>Codigo herramienta</th>"
+                    . "<th>Fecha de ingreso</th>"
+                    . "<th>Nombre de herramienta</th>"
+                    . "<th>ID Categoria</th>"
+                    . "<th>ID estado de uso</th>"
+                    . "<th>ID estado de prestamo</th>"
+                    . "<th>ID condicion</th>"
+                    . "<th>Seleccionar</th>"                    
+                . "</tr></thead><tbody>";
+        while ($fila = mysqli_fetch_assoc($res)){
+        $tabla .="<tr>"
+                ."<td>".$fila["codigo_herramienta"]."</td>"
+                ."<td>".$fila["fecha_ingreso"]."</td>"
+                ."<td>".$fila["nombre_herramienta"]."</td>"
+                ."<td>".$fila["id_categoria"]."</td>"
+                ."<td>".$fila["id_status_uso"]."</td>"
+                ."<td>".$fila["id_status_prestamo"]."</td>"
+                ."<td>".$fila["id_condicion"]."</td>"
+                ."<td><button type='button' class='btn btn-info' name='seleccionar'>Seleccionar</button></td>"
+                ."</tr>";
+        }
+        $tabla .="</tbody></table></div><script>$('#menuHerramienta').attr('style', 'display:show');</script>";
+        $res->close();
+        return $tabla;
+    }
+
+    public function personal(){
+        $sql="select * from empleado;";
+        $this->conectar();
+        $res = $this->con->query($sql);
+        $this->desconectar();
+        $tabla="<br><div style='margin: auto; width: 90%; background-color: white; padding: 15px'>"
+                ."<h3 style=' text-align: center'>Contenido de la tabla herramienta</h3>"
+                ."<table class='table'>"
+                ."<thead class='thead-dark'>";
+        $tabla .="<tr>"
+                    . "<th>ID empleado</th>"
+                    . "<th>Nombre del empleado</th>"
+                    . "<th>Direccion</th>"
+                    . "<th>Telefono</th>"                    
+                    . "<th>Seleccionar</th>"                    
+                . "</tr></thead><tbody>";
+        while ($fila = mysqli_fetch_assoc($res)){
+        $tabla .="<tr>"
+                ."<td>".$fila["id_empleado"]."</td>"
+                ."<td>".$fila["nombre_empleado"]."</td>"
+                ."<td>".$fila["direccion"]."</td>"
+                ."<td>".$fila["telefono"]."</td>"
+                ."<td><button type='button' class='btn btn-info' name='seleccionar'>Seleccionar</button></td>"
+                ."</tr>";
+        }
+        $tabla .="</tbody></table></div></div><script>$('#menuPersonal').attr('style', 'display:show');</script>";
+        $res->close();
+        return $tabla;
+    }
 }
 
 

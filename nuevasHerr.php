@@ -35,7 +35,7 @@ date_default_timezone_set('America/El_Salvador');
 			</div>
 		</div>
 		<div id="modal">
-		<div style="width:90%; margin:auto; margin-top: 9%; background-color: white; padding: 10px;">
+		<div style="width:90%; margin:auto; background-color: white; padding: 30px;">
                     <form method="POST" action="#">
 			<div class="form-group">
 				<label for="nombreHerr">Nombre de la nueva herramienta</label>
