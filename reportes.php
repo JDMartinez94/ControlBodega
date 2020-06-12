@@ -28,7 +28,7 @@ $reporte = new DAOreportes();
 				menu($acceso);
 				?>
 			</div>
-		</div>
+        </div>        
 		<div id="modal">
 			<div style=" width: 90%; height: 90%; margin: auto; background-color: white; padding: 10px;">
 				<div style="width: 90%; height: 90%; margin: auto; padding: 10px; text-align: center;">
@@ -42,17 +42,13 @@ $reporte = new DAOreportes();
 						<input type="submit" class="btn btn-dark" value="Herramientas prestadas por persona" name="repPrest"/>
 						<br /><br />
 						<input type="text" name="categoriaHerr" id="categoriaHerr" />
-						<input type="submit" class="btn btn-warning" value="Herramientas según categoría" name="herrCat"/>
-					</form>
-					<hr />
-					<button type="button" class="btn btn-success">
-						historial general de préstamos
-					</button>
-				</div>
-			</div>
-			<br />
-		</div>
-                <?php
+						<input type="submit" class="btn btn-warning" value="Herramientas según categoría" name="herrCat"/>					
+                    <hr />
+                    <input type="submit" class="btn btn-success" value="Historial general de préstamos" name="histGeneral"/>
+                    </form>
+                </div>                
+			</div>            
+            <?php
                 if(isset($_REQUEST["herrDef"])){
                     $titulo = "Herramientas defectuosas";
                     $filtro = "h.id_condicion = 2";
@@ -73,7 +69,11 @@ $reporte = new DAOreportes();
                     $filtro = "h.id_status_prestamo = 1 and h.id_condicion = 1";
                     echo $reporte->reportesHerr($filtro,$titulo);
                 }
-                
+                if(isset($_REQUEST["histGeneral"])){
+                    echo $reporte->historial();
+                }                
                 ?>
+		</div>
+                
 	</body>
 </html>
