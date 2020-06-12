@@ -2,8 +2,8 @@
 session_start();
 $acceso = $_SESSION["user"]["id_rol"];
 include("PHP/formulas.php");
-include("PHP/DAOregistro.php");
-$dao = new DAOregistro();
+include("PHP/DAOPrestamo.php");
+$dao = new DAOPrestamo();
 $prestamo = new registro();
 
 date_default_timezone_set('America/El_Salvador');
@@ -58,13 +58,13 @@ $id = $_SESSION["user"]["id_usuario"];
 				</div>
 				<?php
 				if(isset($_REQUEST["crearReg"])){
-					$transaccion = 1;
+					//$transaccion = 1;
 					$prestamo->setFecha_registro(date("Y-m-d H:i:s"));
 					$prestamo->setId_tipo_registro("1");
 					$prestamo->setCodigo_herramienta($_REQUEST["codigoHerr"]);
 					$prestamo->setId_empleado($_REQUEST["idEmp"]);
 					$prestamo->setId_usuario($id);
-					$dao->registrar($prestamo,$transaccion);	
+					$dao->registrar($prestamo);	
 					echo $dao->getRegistro();
 				}
 				?>
