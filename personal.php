@@ -36,7 +36,16 @@ $usuario = new usuario();
 		</div>
 
 		<div id="modal">
-    <div style="width:90%; margin: auto; margin-top: 10%; background-color: white; padding: 10px; display: grid; grid-template-columns: 50% 50%; grid-template-rows: 1fr">
+		<?php
+		if(isset($_REQUEST["empleado"])){
+			$empleado->setNombre_empleado($_REQUEST["nomEmp"]);
+			$empleado->setDireccion($_REQUEST["dir"]);
+			$empleado->setTelefono($_REQUEST["tel"]);
+			$daoEmpleado->insertar($empleado);
+			echo $daoEmpleado->getEmpleado();
+		}
+		?>
+    <div style="width:90%; margin: auto; background-color: white; padding: 15px; display: grid; grid-template-columns: 50% 50%; grid-template-rows: 1fr">
         <div style=" align-self: center; justify-self: center;width:90%">	
         <form method="POST" action="#">
                     <h5> Registro de empleado nuevo</h5><br>
@@ -88,15 +97,6 @@ $usuario = new usuario();
                     
 </div>
 <?php
-if(isset($_REQUEST["empleado"])){
-    $empleado->setNombre_empleado($_REQUEST["nomEmp"]);
-    $empleado->setDireccion($_REQUEST["dir"]);
-    $empleado->setTelefono($_REQUEST["tel"]);
-    $daoEmpleado->insertar($empleado);
-    echo $daoEmpleado->getEmpleado();
-}
-?>   
-<?php
 if(isset($_REQUEST["usuario"])){
     $usuario->setNombre_usuario($_REQUEST["nuevoUser"]);
     $usuario->setId_empleado($_REQUEST["empID"]);
@@ -104,8 +104,7 @@ if(isset($_REQUEST["usuario"])){
     $usuario->setId_rol($_REQUEST["rol"]);
     $daoUsuario->insertar($usuario);
 }
-?>
-            
+?>            
             
 </body>
 </html>

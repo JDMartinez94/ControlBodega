@@ -34,7 +34,7 @@ $estado = new herramienta();
 		</div>
 
 		<div id="modal">			
-		<div style="width:90%; margin:auto; margin-top: 5%; background-color: white; padding: 10px;">
+		<div style="width:90%; margin:auto; background-color: white; padding: 30px;">
 		<form>
 			<div class="form-group">
 				<label for="codigoHerr">Codigo de la herramienta</label>
