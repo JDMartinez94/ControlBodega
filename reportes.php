@@ -102,22 +102,26 @@ $reporte = new DAOreportes();
                 if(isset($_REQUEST["herrDef"])){
                     $titulo = "Herramientas defectuosas";
                     $filtro = "h.id_condicion = 2";
-                    echo $reporte->reportesHerr($filtro,$titulo);
+                    $imprep = "<a href=mpdf/repoherrdefect.php target='_blank'><button type='button' class='btn btn-info' name='herrdefecto'" ;
+                    echo $reporte->reportesHerr($filtro,$titulo,$imprep);
                 }
                 if(isset($_REQUEST["herrNuev"])){
                     $titulo = "Herramientas nuevas";
                     $filtro = "h.id_status_uso = 1";
-                    echo $reporte->reportesHerr($filtro,$titulo);
+                    $imprep = "<a href=mpdf/reponuevaherr.php target='_blank'><button type='button' class='btn btn-info' name='herrdefecto'" ;
+                    echo $reporte->reportesHerr($filtro,$titulo,$imprep);
                 }
                 if(isset($_REQUEST["herrUso"])){
                     $titulo = "Herramientas en uso";
                     $filtro = "h.id_status_prestamo = 2";
-                    echo $reporte->reportesHerr($filtro,$titulo);
+                    $imprep = "<a href=mpdf/repoherrenuso.php target='_blank'><button type='button' class='btn btn-info' name='herrdefecto'";
+                    echo $reporte->reportesHerr($filtro,$titulo,$imprep);
                 }
                 if(isset($_REQUEST["herrDisp"])){
                     $titulo = "Herramientas disponibles";
                     $filtro = "h.id_status_prestamo = 1 and h.id_condicion = 1";
-                    echo $reporte->reportesHerr($filtro,$titulo);
+                    $imprep = "<a href=mpdf/repoherrdisponible.php target='_blank'><button type='button' class='btn btn-info' name='herrdefecto'";                
+                    echo $reporte->reportesHerr($filtro,$titulo,$imprep);
                 }
                 if(isset($_REQUEST["histGeneral"])){
                     echo $reporte->historial();

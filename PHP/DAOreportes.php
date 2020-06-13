@@ -16,7 +16,7 @@ class DAOreportes{
     $this->con->close();
     }
 
-    public function reportesHerr($filtro,$titulo){
+    public function reportesHerr($filtro,$titulo,$imprep){
         $sql="select h.codigo_herramienta, h.fecha_ingreso, h.nombre_herramienta, c.nombre_categoria, u.status_uso, p.status_prestamo, cd.condicion from herramienta h join categoria c on c.id_categoria = h.id_categoria join status_uso u on u.id_status_uso = h.id_status_uso join status_prestamo p on p.id_status_prestamo = h.id_status_prestamo join condicion cd on cd.id_condicion = h.id_condicion where $filtro ";
         $this->conectar();
         $res = $this->con->query($sql);
@@ -46,7 +46,7 @@ class DAOreportes{
                 ."</tr>";
         }
         $tabla .="</tbody></table>"
-        ."<center><button type='button' class='btn btn-info' name='imprimir'>Imprimir reporte</button></center></div>";
+        ."<center>".$imprep.">Imprimir reporte</button></a></center></div>";
         $res->close();
         return $tabla;
     }
