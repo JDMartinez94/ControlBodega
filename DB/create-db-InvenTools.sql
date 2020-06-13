@@ -197,6 +197,33 @@ DELIMITER // ;
  update herramienta set id_status_prestamo = 1 where codigo_herramienta = p_codigo_herramienta; 
 END // ;
 
+-- SP para reporte préstamos por empleado
+DELIMITER // ;
+ Create PROCEDURE PrestamoXEmpledao(IN p_nombre_empleado varchar(60))
+ BEGIN
+	select r.id_registro, r.fecha_registro, tp.tipo_registro, h.nombre_herramienta, e.nombre_empleado, u.nombre_usuario
+	from registro r 
+	join tipo_registro tp on tp.id_tipo_registro = r.id_tipo_registro
+	join herramienta h on h.codigo_herramienta = r.codigo_herramienta
+	join empleado e on e.id_empleado = r.id_empleado
+	join usuario u on u.id_usuario = r.id_usuario
+	where r.id_tipo_registro = 1
+	and e.nombre_empleado like p_nombre_empleado;
+END // ;
+
+-- SP para reporte herramientas por categoria
+DELIMITER // ;
+ Create PROCEDURE HerramientasXCategoria(IN p_nombre_categoria varchar(50))
+ BEGIN
+	Select h.codigo_herramienta, h.fecha_ingreso, h.nombre_herramienta, c.nombre_categoria, u.status_uso, p.status_prestamo, cd.condicion
+	from herramienta h 
+	join categoria c on c.id_categoria = h.id_categoria
+	join status_uso u on u.id_status_uso = h.id_status_uso
+	join status_prestamo p on p.id_status_prestamo = h.id_status_prestamo
+	join condicion cd on cd.id_condicion = h.id_condicion
+	where c.nombre_categoria like p_nombre_categoria;
+END // ;
+
 
 
 
