@@ -88,7 +88,8 @@ class DAOreportes{
                 ."</tr>";
         }
         $tabla .="</tbody></table>"
-        ."<center><button type='button' class='btn btn-info' name='imprimir'>Imprimir reporte</button></center></div>";
+        ."<center><a href=mpdf/repohistprestamo.php class='btn btn-info' target='_blank'>Imprimir reporte</a></button>
+        </center></div>";
         $res->close();
         return $tabla;
     }
@@ -135,7 +136,7 @@ class DAOreportes{
         $res = $this->con->query($sql);
         $this->desconectar();
         $tabla="<br><div style='margin: auto; width: 90%; background-color: white; padding: 15px'>"
-                ."<h3 style=' text-align: center'>Contenido de la tabla herramienta</h3>"
+                ."<h3 style=' text-align: center'>Contenido de la tabla empleado</h3>"
                 ."<table class='table'>"
                 ."<thead class='thead-dark'>";
         $tabla .="<tr>"
@@ -155,6 +156,78 @@ class DAOreportes{
                 ."</tr>";
         }
         $tabla .="</tbody></table></div></div>";
+        $res->close();
+        return $tabla;
+    }
+
+
+    public function presxEmpleado($nomEmpleado){
+        $sql="call PrestamoXEmpleado ('%".$nomEmpleado."%')";
+        $this->conectar();
+        $res = $this->con->query($sql);
+        $this->desconectar();
+        $tabla="<br><div style='margin: auto; width: 90%; background-color: white; padding: 15px'>"
+                ."<h3 style=' text-align: center'>Préstamos por Empleado</h3>"
+                ."<table class='table'>"
+                ."<thead class='thead-dark'>";
+        $tabla .="<tr>"
+                    . "<th>ID registro</th>"
+                    . "<th>Fecha de registro</th>"
+                    . "<th>Tipo de registro</th>"
+                    . "<th>Nombre Herramienta</th>" 
+                    . "<th>Nombre Empleado</th>"
+                    . "<th>Nombre Usuario</th>"                   
+                    . "<th>Seleccionar</th>"                    
+                . "</tr></thead><tbody>";
+        while ($fila = mysqli_fetch_assoc($res)){
+        $tabla .="<tr>"
+                ."<td>".$fila["id_registro"]."</td>"
+                ."<td>".$fila["fecha_registro"]."</td>"
+                ."<td>".$fila["tipo_registro"]."</td>"
+                ."<td>".$fila["nombre_herramienta"]."</td>"
+                ."<td>".$fila["nombre_empleado"]."</td>"
+                ."<td>".$fila["nombre_usuario"]."</td>"
+                ."<td><button type='button' class='btn btn-info' name='seleccionar'>Seleccionar</button></td>"
+                ."</tr>";
+        }
+        $tabla .="</tbody></table></div></div><script>$('#menuPersonal').attr('style', 'display:show');</script>";
+        $res->close();
+        return $tabla;
+    }
+
+
+    public function herrXCategoria($nomCategoria){
+        $sql="call HerramientasXCategoria ('%".$nomCategoria."%')";
+        $this->conectar();
+        $res = $this->con->query($sql);
+        $this->desconectar();
+        $tabla="<br><div style='margin: auto; width: 90%; background-color: white; padding: 15px'>"
+                ."<h3 style=' text-align: center'>Herramientas por Categoria</h3>"
+                ."<table class='table'>"
+                ."<thead class='thead-dark'>";
+        $tabla .="<tr>"
+                    . "<th>Código Herramienta</th>"
+                    . "<th>Fecha de ingreso</th>"
+                    . "<th>Nombre Herramienta</th>"
+                    . "<th>Nombre Categoría</th>" 
+                    . "<th>Status de uso</th>" 
+                    . "<th>Status de préstamo</th>" 
+                    . "<th>Condición de Herramienta</th>"                    
+                    . "<th>Seleccionar</th>"                    
+                . "</tr></thead><tbody>";
+        while ($fila = mysqli_fetch_assoc($res)){
+        $tabla .="<tr>"
+                ."<td>".$fila["codigo_herramienta"]."</td>"
+                ."<td>".$fila["fecha_ingreso"]."</td>"
+                ."<td>".$fila["nombre_herramienta"]."</td>"
+                ."<td>".$fila["nombre_categoria"]."</td>"
+                ."<td>".$fila["status_uso"]."</td>"
+                ."<td>".$fila["status_prestamo"]."</td>"
+                ."<td>".$fila["condicion"]."</td>"
+                ."<td><button type='button' class='btn btn-info' name='seleccionar'>Seleccionar</button></td>"
+                ."</tr>";
+        }
+        $tabla .="</tbody></table></div></div><script>$('#menuPersonal').attr('style', 'display:show');</script>";
         $res->close();
         return $tabla;
     }

@@ -48,11 +48,11 @@ function cargarEmpleado(id, nombre, direc, tel){
                                         <input type="submit" class="btn btn-dark" value="Herramientas en uso" name="herrUso">
                                         <input type="submit" class="btn btn-warning" value="Herramientas disponibles" name="herrDisp">
                                             <hr />
-                                            <input type="text" name="idEmpleado" id="idEmpleado" />
-                                            <input type="submit" class="btn btn-dark" value="Herramientas prestadas por persona" name="repPrest"/>
+                                            <input type="text" name="txtnomEmpleado" id="txtnomEmpleado" placeholder="Nombre de Empleado" />
+                                            <input type="submit" class="btn btn-dark" value="Prestamos por Empleado" name="repPrest"/>
                                             <br /><br />
-                                            <input type="text" name="categoriaHerr" id="categoriaHerr" />
-                                            <input type="submit" class="btn btn-warning" value="Herramientas según categoría" name="herrCat"/>					
+                                            <input type="text" name="txtnomCategoria" id="txtnomCategoria" placeholder="Nombre de Categoría"  />
+                                            <input type="submit" class="btn btn-warning" value="Herramientas por categoría" name="herrCat"/>					
                 <hr />
                 <input type="submit" class="btn btn-success" value="Historial general de préstamos" name="histGeneral"/>
                 <hr />
@@ -146,6 +146,14 @@ if(isset($_REQUEST["personal"])){
     echo "<script>$('#menuPersonal').attr('style', 'display:show');</script>";
     echo $reporte->personal();
     
+}
+if(isset($_REQUEST["repPrest"])){
+    $nomEmpleado = $_REQUEST["txtnomEmpleado"];
+    echo $reporte->presxEmpleado($nomEmpleado);
+}
+if(isset($_REQUEST["herrCat"])){
+    $nomCategoria = $_REQUEST["txtnomCategoria"];
+    echo $reporte->herrXCategoria($nomCategoria);
 }
 ?>
 </body>
