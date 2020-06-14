@@ -1,7 +1,5 @@
 <?php
-include("credenciales.php");
 include("DAOempleado.php");
-
 $empleado = new DAOempleado();
 
 class DAOreportes{
@@ -9,7 +7,7 @@ class DAOreportes{
     
     public function conectar(){
         try{
-        $this->con= new mysqli(SERVIDOR,USUARIO,CONTRA,BD) or die ("Error al conectar");    
+        $this->con= new mysqli('localhost','root','','inventools') or die ("Error al conectar");
         } catch (Exception $ex) {
             echo $ex->getTraceAsString();
         }        
@@ -122,7 +120,7 @@ class DAOreportes{
                 ."<td>".$fila["id_status_uso"]."</td>"
                 ."<td>".$fila["id_status_prestamo"]."</td>"
                 ."<td>".$fila["id_condicion"]."</td>"
-                ."<td><button type='button' class='btn btn-info' name='seleccionar'>Seleccionar</button></td>"
+                ."<td><a href=\"javascript:cargarHerramienta('".$fila["codigo_herramienta"]."','".$fila["fecha_ingreso"]."','".$fila["nombre_herramienta"]."','".$fila["id_categoria"]."','".$fila["id_status_uso"]."','".$fila["id_status_prestamo"]."','".$fila["id_condicion"]."')\"><button type='button' class='btn btn-info' name='seleccionar'>Seleccionar</button></a></td>"                
                 ."</tr>";
         }
         $tabla .="</tbody></table></div>";

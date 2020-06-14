@@ -1,6 +1,6 @@
 <?php
 
-// prueba prueba
+
 include("herramienta.php");
 include("credenciales.php");
 
@@ -42,7 +42,7 @@ class DAOherramienta {
     }
     public function cambiar($obj,$codigo_herramienta){
         $herr = new herramienta();
-        $obj = $herr;
+        $herr =$obj;
         $sql = 
         "UPDATE herramienta SET         
         fecha_ingreso = '".$obj->getFecha_ingreso()."',
@@ -50,9 +50,8 @@ class DAOherramienta {
         id_categoria = ".$obj->getId_categoria().",
         id_status_uso = ".$obj->getId_status_uso().",
         id_status_prestamo = ".$obj->getId_status_prestamo().",
-        id_condicion = ".$obj->getId_condicion().",
-        WHERE codigo = ".$codigo_herramienta.";";
-        
+        id_condicion = ".$obj->getId_condicion()."
+        WHERE codigo_herramienta = ".$codigo_herramienta.";";
         $this->conectar();
         if ($this->con->query($sql)){
             echo "<script>swal({title:'Exito',text:'El registro fue modificado exitosamente',icon:'success'})</script>";
