@@ -85,7 +85,8 @@ class DAOreportes{
                 ."</tr>";
         }
         $tabla .="</tbody></table>"
-        ."<center><button type='button' class='btn btn-info' name='imprimir'>Imprimir reporte</button></center></div>";
+        ."<center><a href=mpdf/repohistprestamo.php class='btn btn-info' target='_blank'>Imprimir reporte</a></button>
+        </center></div>";
         $res->close();
         return $tabla;
     }
