@@ -55,10 +55,11 @@ function cargarEmpleado(id, nombre, direc, tel){
                                             <input type="submit" class="btn btn-warning" value="Herramientas por categoría" name="herrCat"/>					
                 <hr />
                 <input type="submit" class="btn btn-success" value="Historial general de préstamos" name="histGeneral"/>
-                <hr />
-                <input type="submit" class="btn btn-primary" value="Modificar herramientas" id="herramientas" name="herramientas"/>
-                <input type="submit" class="btn btn-primary" value="  Modificar personal  " id="personal" name="personal"/>
                 </form>
+                <hr />
+                <button class="btn btn-primary">Modificar herramientas</button>
+                <a onclick="window.open('tablaEmpleados.php','_blank','location=yes,height=570,width=1300,scrollbars=yes,status=yes');" ><button class="btn btn-primary">  Modificar personal  </button></a>
+                </div>
                 <div style="display: none" id="menuHerramienta">
                 <br>
                 <form action="" method="POST" name="tablaHerramienta">
@@ -88,25 +89,7 @@ function cargarEmpleado(id, nombre, direc, tel){
                 <input type="submit" class="btn btn-danger" value="Eliminar" name="eliminarHerr"/>
                 </form>
                 </div>
-                <div style="display: none" id="menuPersonal">
-                <br>
-                <form action="#" method="POST" name="tablaEmpleado">
-                    <label for="idEmp">ID empleado</label>
-                    <input type="text" name="idEmp" id="idEmp" />
-
-                    <label for="nombreEmp">Nombre del empleado</label>
-                    <input type="text" name="nombreEmp" id="nombreEmp" />
-
-                    <label for="dir">Direccion</label>
-                    <input type="text" name="dir" id="dir" />
-
-                    <label for="tel">Telefono</label>
-                    <input type="text" name="tel" id="tel" /><br><br>
-                <input type="submit" class="btn btn-secondary" value="Modificar" name="modificarEmp"/>
-                <input type="submit" class="btn btn-danger" value="Eliminar" name="eliminarEmp"/>
-                </form>
-                </div>
-                </div>
+                
             </div>
             <?php
                 if(isset($_REQUEST["herrDef"])){
@@ -141,11 +124,6 @@ function cargarEmpleado(id, nombre, direc, tel){
 <?php
 if(isset($_REQUEST["herramientas"])){
     echo $reporte->herramientas();
-}
-if(isset($_REQUEST["personal"])){
-    echo "<script>$('#menuPersonal').attr('style', 'display:show');</script>";
-    echo $reporte->personal();
-    
 }
 if(isset($_REQUEST["repPrest"])){
     $nomEmpleado = $_REQUEST["txtnomEmpleado"];

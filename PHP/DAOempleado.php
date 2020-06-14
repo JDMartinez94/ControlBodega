@@ -70,22 +70,22 @@ class DAOempleado {
         $this->desconectar();
     }
     
-    public function cambiar($emp,$id_empleado){
-        $emp = new empleado();   
+    public function cambiar($obj,$id_empleado){
+        $emp = new empleado();  
+        $emp = $obj;
         $sql = 
         "UPDATE empleado SET
-        nombre_empleado = ".$emp->getNombre_empleado().",
-        direccion = ".$emp->getDireccion().",
-        telefono = ".$emp->getTelefono().",
+        nombre_empleado = '".$obj->getNombre_empleado()."',
+        direccion = '".$obj->getDireccion()."',
+        telefono = '".$obj->getTelefono()."'
         WHERE id_empleado = ".$id_empleado.";";
-        
         $this->conectar();
         if ($this->con->query($sql)){
             echo "<script>swal({title:'Exito',text:'El registro fue modificado exitosamente',icon:'success'})</script>";
         }else{
             echo "<script>swal({title:'Error',text:'El registro no fue modificado',icon:'error'})</script>";
         }
-        $this->desconectar();        
+        $this->desconectar();
     }
         
 }
