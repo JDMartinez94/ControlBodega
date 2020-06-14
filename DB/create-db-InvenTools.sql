@@ -199,7 +199,7 @@ END // ;
 
 -- SP para reporte préstamos por empleado
 DELIMITER // ;
- Create PROCEDURE PrestamoXEmpledao(IN p_nombre_empleado varchar(60))
+ Create PROCEDURE PrestamoXEmpleado(IN p_nombre_empleado varchar(60))
  BEGIN
 	select r.id_registro, r.fecha_registro, tp.tipo_registro, h.nombre_herramienta, e.nombre_empleado, u.nombre_usuario
 	from registro r 
