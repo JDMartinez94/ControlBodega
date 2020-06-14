@@ -1,5 +1,8 @@
 <?php
 include("credenciales.php");
+include("DAOempleado.php");
+
+$empleado = new DAOempleado();
 
 class DAOreportes{
     private $con;
@@ -121,7 +124,7 @@ class DAOreportes{
                 ."<td><button type='button' class='btn btn-info' name='seleccionar'>Seleccionar</button></td>"
                 ."</tr>";
         }
-        $tabla .="</tbody></table></div><script>$('#menuHerramienta').attr('style', 'display:show');</script>";
+        $tabla .="</tbody></table></div>";
         $res->close();
         return $tabla;
     }
@@ -148,10 +151,10 @@ class DAOreportes{
                 ."<td>".$fila["nombre_empleado"]."</td>"
                 ."<td>".$fila["direccion"]."</td>"
                 ."<td>".$fila["telefono"]."</td>"
-                ."<td><button type='button' class='btn btn-info' name='seleccionar'>Seleccionar</button></td>"
+                ."<td><a href=\"javascript:cargarEmpleado('".$fila["id_empleado"]."','".$fila["nombre_empleado"]."','".$fila["direccion"]."','".$fila["telefono"]."')\"><button type='button' class='btn btn-info' name='seleccionar'>Seleccionar</button></a></td>"
                 ."</tr>";
         }
-        $tabla .="</tbody></table></div></div><script>$('#menuPersonal').attr('style', 'display:show');</script>";
+        $tabla .="</tbody></table></div></div>";
         $res->close();
         return $tabla;
     }

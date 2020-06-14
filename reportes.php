@@ -4,6 +4,7 @@ $acceso = $_SESSION["user"]["id_rol"];
 include("PHP/formulas.php");
 include("PHP/DAOreportes.php");
 $reporte = new DAOreportes();
+$empleado = new DAOempleado();
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +17,15 @@ $reporte = new DAOreportes();
         <link rel="stylesheet" href="styleOpciones.css" />
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <title>Reportes</title>
+<script>
+function cargarEmpleado(id, nombre, direc, tel){
+    document.tablaEmpleado.idEmp.value=id;
+    document.tablaEmpleado.nombreEmp.value=nombre;
+    document.tablaEmpleado.dir.value=direc;
+    document.tablaEmpleado.tel.value=tel;
+}
+</script>
+
 </head>
 	<body>
 		<div id="header">
@@ -32,7 +42,7 @@ $reporte = new DAOreportes();
             <div id="modal">
             <div style=" width: 90%; height: 90%; margin: auto; background-color: white; padding: 10px;">
                             <div style="width: 90%; height: 90%; margin: auto; padding: 10px; text-align: center;">
-                                    <form action="" method="POST">
+                                    <form action="#" method="POST">
                                         <input type="submit" class="btn btn-dark" value="Herramientas defectuosas" name="herrDef">
                                         <input type="submit" class="btn btn-warning" value="Herramientas nuevas" name="herrNuev">
                                         <input type="submit" class="btn btn-dark" value="Herramientas en uso" name="herrUso">
@@ -51,7 +61,7 @@ $reporte = new DAOreportes();
                 </form>
                 <div style="display: none" id="menuHerramienta">
                 <br>
-                <form action="" method="POST">
+                <form action="" method="POST" name="tablaHerramienta">
                     <label for="idherramienta">Codigo herramienta</label>
                     <input type="text" name="idherramienta" id="idherramienta" />
 
@@ -74,13 +84,13 @@ $reporte = new DAOreportes();
                     <input type="text" name="idCond" id="idCond" />
                 <br>
                 <br>
-                <input type="submit" class="btn btn-secondary" value="Modificar" name="modificar"/>
-                <input type="submit" class="btn btn-danger" value="Eliminar" name="eliminar"/>
+                <input type="submit" class="btn btn-secondary" value="Modificar" name="modificarHerr"/>
+                <input type="submit" class="btn btn-danger" value="Eliminar" name="eliminarHerr"/>
                 </form>
                 </div>
                 <div style="display: none" id="menuPersonal">
                 <br>
-                <form action="" method="POST">
+                <form action="#" method="POST" name="tablaEmpleado">
                     <label for="idEmp">ID empleado</label>
                     <input type="text" name="idEmp" id="idEmp" />
 
@@ -92,8 +102,8 @@ $reporte = new DAOreportes();
 
                     <label for="tel">Telefono</label>
                     <input type="text" name="tel" id="tel" /><br><br>
-                <input type="submit" class="btn btn-secondary" value="Modificar" name="modificar"/>
-                <input type="submit" class="btn btn-danger" value="Eliminar" name="eliminar"/>
+                <input type="submit" class="btn btn-secondary" value="Modificar" name="modificarEmp"/>
+                <input type="submit" class="btn btn-danger" value="Eliminar" name="eliminarEmp"/>
                 </form>
                 </div>
                 </div>
@@ -133,7 +143,9 @@ if(isset($_REQUEST["herramientas"])){
     echo $reporte->herramientas();
 }
 if(isset($_REQUEST["personal"])){
+    echo "<script>$('#menuPersonal').attr('style', 'display:show');</script>";
     echo $reporte->personal();
+    
 }
 ?>
 </body>
