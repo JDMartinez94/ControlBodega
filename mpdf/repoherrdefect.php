@@ -33,7 +33,9 @@ join status_uso u on u.id_status_uso = h.id_status_uso join status_prestamo p on
 	$tabla .= "</table>";
 	return $tabla;
 }
-$html = selectTabla();
+$html = "<img src='img/inventool.png' width='200px'><hr><p align ='center'><font face='Black Ops One'>REPORTE <BR> HERRAMIENTAS DEFECTUOSAS</font><br></p>";
+$html .= "<hr>";
+$html .= selectTabla();
 $pdf= new mPDF('c');
 $pdf->WriteHTML($html);
 $pdf->Output();
