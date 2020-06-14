@@ -37,7 +37,10 @@ function selectTabla(){
 	$tabla .= "</table>";
 	return $tabla;
 }
-$html = selectTabla();
+
+$html = "<img src='img/inventool.png' width='200px'><hr><p align ='center'><font face='Black Ops One'>REPORTE <BR> HISTORIAL DE PRESTAMOS</font><br></p>";
+$html .= "<hr>";
+$html .= selectTabla();
 $pdf= new mPDF('c');
 $pdf->WriteHTML($html);
 $pdf->Output();
