@@ -4,8 +4,8 @@ include "mpdf/mpdf.php";
 function selectTabla(){
 	$con = new mysqli("localhost","root","","inventools");
     //verificar en caso de error
-    $sql ="select r.id_registro, r.fecha_registro, tr.tipo_registro, r.codigo_herramienta, h.nombre_herramienta, r.id_empleado, e.nombre_empleado, r.id_usuario, u.nombre_usuario from registro r join tipo_registro tr on tr.id_tipo_registro = r.id_tipo_registro join herramienta h on h.codigo_herramienta = r.codigo_herramienta
-        join empleado e on e.id_empleado = r.id_empleado join usuario u on u.id_usuario = r.id_usuario where r.id_tipo_registro = 1";
+    $sql ="select r.id_registro, r.fecha_registro, tr.tipo_registro, r.codigo_herramienta, h.nombre_herramienta, r.id_empleado, e.nombre_empleado, r.id_usuario, u.nombre_usuario from registro r join tipo_registro tr on tr.id_tipo_registro = r.id_tipo_registro
+        join herramienta h on h.codigo_herramienta = r.codigo_herramienta join empleado e on e.id_empleado = r.id_empleado join usuario u on   u.id_usuario = r.id_usuario where r.id_tipo_registro = 1;";
     $res = $con->query($sql);
 	$tabla="";
 	$tabla .= "<table>
