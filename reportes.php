@@ -55,6 +55,7 @@ function cargarEmpleado(id, nombre, direc, tel){
                             <input type="submit" class="btn btn-warning" value="Herramientas por categoría" name="herrCat"/>					
                 <hr />
                 <input type="submit" class="btn btn-success" value="Historial general de préstamos" name="histGeneral"/>
+                <input type="submit" class="btn btn-success" value="Historial general de devoluciones" name="histGeneral2"/>
                 </form>
                 <hr />
                 <a onclick="window.open('tablaHerramientas.php','_blank','location=yes,height=570,width=1300,scrollbars=yes,status=yes');" ><button class="btn btn-primary">Modificar herramientas</button></a>
@@ -89,6 +90,9 @@ function cargarEmpleado(id, nombre, direc, tel){
                 }
                 if(isset($_REQUEST["histGeneral"])){
                     echo $reporte->historial();
+                } 
+                if(isset($_REQUEST["histGeneral2"])){
+                    echo $reporte->historialdev();
                 }                
                 ?>
     

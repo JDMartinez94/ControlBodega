@@ -92,6 +92,46 @@ class DAOreportes{
         return $tabla;
     }
 
+    public function historialdev(){
+        $sql="select r.id_registro, r.fecha_registro, tr.tipo_registro, r.codigo_herramienta, h.nombre_herramienta, r.id_empleado, e.nombre_empleado, r.id_usuario, u.nombre_usuario from registro r join tipo_registro tr on tr.id_tipo_registro = r.id_tipo_registro join herramienta h on h.codigo_herramienta = r.codigo_herramienta join empleado e on e.id_empleado = r.id_empleado join usuario u on u.id_usuario = r.id_usuario where r.id_tipo_registro = 2;";
+        $this->conectar();
+        $res = $this->con->query($sql);
+        $this->desconectar();
+        $tabla="<br><div style='margin: auto; width: 90%; background-color: white; padding: 15px'>"
+                ."<h3 style=' text-align: center'>Historial general de devoluciones</h3>"
+                ."<table class='table'>"
+                ."<thead class='thead-dark'>";
+        $tabla .="<tr>"
+                    . "<th>ID Registro</th>"
+                    . "<th>Fecha de registro</th>"
+                    . "<th>Tipo de registro</th>"
+                    . "<th>Codigo de herramienta</th>"
+                    . "<th>Nombre de la herramienta</th>"
+                    . "<th>ID empleado que devuelve</th>"
+                    . "<th>Nombre de empleado prestamista</th>"
+                    . "<th>ID Usuario que registro</th>"
+                    . "<th>Usuario que registro</th>"
+                . "</tr></thead><tbody>";
+        while ($fila = mysqli_fetch_assoc($res)){
+        $tabla .="<tr>"
+                ."<td>".$fila["id_registro"]."</td>"
+                ."<td>".$fila["fecha_registro"]."</td>"
+                ."<td>".$fila["tipo_registro"]."</td>"
+                ."<td>".$fila["codigo_herramienta"]."</td>"
+                ."<td>".$fila["nombre_herramienta"]."</td>"
+                ."<td>".$fila["id_empleado"]."</td>"
+                ."<td>".$fila["nombre_empleado"]."</td>"
+                ."<td>".$fila["id_usuario"]."</td>"
+                ."<td>".$fila["nombre_usuario"]."</td>"
+                ."</tr>";
+        }
+        $tabla .="</tbody></table>"
+        ."<center><a href=mpdf/repohistprestamo.php class='btn btn-info' target='_blank'>Imprimir reporte</a></button>
+        </center></div>";
+        $res->close();
+        return $tabla;
+    }
+
     public function herramientas(){
         $sql="select * from herramienta;";
         $this->conectar();
