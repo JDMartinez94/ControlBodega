@@ -1,5 +1,6 @@
 <?php
-include("DAOempleado.php");
+include ("DAOempleado.php");
+include ("credenciales.php");
 $empleado = new DAOempleado();
 
 class DAOreportes{
@@ -7,7 +8,7 @@ class DAOreportes{
     
     public function conectar(){
         try{
-        $this->con= new mysqli('localhost','root','','inventools') or die ("Error al conectar");
+        $this->con= new mysqli(SERVIDOR,USUARIO,CONTRA,BD) or die ("Error al conectar");
         } catch (Exception $ex) {
             echo $ex->getTraceAsString();
         }        
