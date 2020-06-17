@@ -126,7 +126,7 @@ class DAOreportes{
                 ."</tr>";
         }
         $tabla .="</tbody></table>"
-        ."<center><a href=mpdf/repohistprestamo.php class='btn btn-info' target='_blank'>Imprimir reporte</a></button>
+        ."<center><a href=mpdf/repohistdevoluciones.php class='btn btn-info' target='_blank'>Imprimir reporte</a></button>
         </center></div>";
         $res->close();
         return $tabla;
