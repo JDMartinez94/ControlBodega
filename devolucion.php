@@ -59,14 +59,14 @@ echo $id;
 			</div>
 			<?php
 			if(isset($_REQUEST["crearReg"])){
-				//$transaccion = 2;
+				$id_herr = $_REQUEST["codigoHerr"];
 				$devo->setFecha_registro(date("Y-m-d H:i:s"));
 				$devo->setId_tipo_registro("2");
 				$devo->setCodigo_herramienta($_REQUEST["codigoHerr"]);
 				$devo->setId_empleado($_REQUEST["idEmp"]);
 				$devo->setId_usuario($id);
 				$dao->registrar($devo);
-				echo $dao->getRegistro();
+				echo $dao->getRegistro($id_herr);
 			}
 			?>
 		</div>

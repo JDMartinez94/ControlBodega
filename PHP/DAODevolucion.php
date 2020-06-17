@@ -33,7 +33,7 @@ class DAODevolucion{
         $this->desconectar();
     }
     
-    public function getRegistro(){
+    public function getRegistro($id){
         $sql="select 
             reg.fecha_registro,
             herr.nombre_herramienta,
@@ -43,6 +43,7 @@ class DAODevolucion{
             join empleado emp on reg.id_empleado = emp.id_empleado
             join usuario usuario on reg.id_usuario = usuario.id_usuario
             join herramienta herr on reg.codigo_herramienta = herr.codigo_herramienta
+            where reg.codigo_herramienta = ".$id."
             order by reg.fecha_registro desc limit 1;";
         $this->conectar();
         $res = $this->con->query($sql);

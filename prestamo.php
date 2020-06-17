@@ -58,14 +58,14 @@ $id = $_SESSION["user"]["id_usuario"];
 				</div>
 				<?php
 				if(isset($_REQUEST["crearReg"])){
-					//$transaccion = 1;
+					$id_herr = $_REQUEST["codigoHerr"];
 					$prestamo->setFecha_registro(date("Y-m-d H:i:s"));
 					$prestamo->setId_tipo_registro("1");
-					$prestamo->setCodigo_herramienta($_REQUEST["codigoHerr"]);
+					$prestamo->setCodigo_herramienta($id_herr);
 					$prestamo->setId_empleado($_REQUEST["idEmp"]);
 					$prestamo->setId_usuario($id);
 					$dao->registrar($prestamo);	
-					echo $dao->getRegistro();
+					echo $dao->getRegistro($id_herr);
 				}
 				?>
 		</div>
