@@ -1,8 +1,8 @@
 <?php
 include "mpdf/mpdf.php";
-
+include("../PHP/credenciales.php");
 function selectTabla(){
-	$con = new mysqli("localhost","root","","inventools");
+	$con= new mysqli(SERVIDOR,USUARIO,CONTRA,BD) or die ("Error al conectar");  
     //verificar en caso de error
     $sql ="select r.id_registro, r.fecha_registro, tr.tipo_registro, r.codigo_herramienta, h.nombre_herramienta, r.id_empleado, e.nombre_empleado, r.id_usuario, u.nombre_usuario from registro r join tipo_registro tr on tr.id_tipo_registro = r.id_tipo_registro
         join herramienta h on h.codigo_herramienta = r.codigo_herramienta join empleado e on e.id_empleado = r.id_empleado join usuario u on   u.id_usuario = r.id_usuario where r.id_tipo_registro = 1;";

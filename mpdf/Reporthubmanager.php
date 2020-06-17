@@ -1,8 +1,8 @@
 <?php
 include "mpdf/mpdf.php";
-
+include("../PHP/credenciales.php");
 function selectTabla(){
-	$con = new mysqli("localhost","root","","inventools");
+	$con= new mysqli(SERVIDOR,USUARIO,CONTRA,BD) or die ("Error al conectar");  
     //verificar en caso de error
     $sql ="select * from usuario";
 	$res = $con->query($sql);
