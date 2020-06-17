@@ -24,7 +24,7 @@ class DAODevolucion{
         $this->conectar();
         $this->con->query($sql);
         //$this->setFetchMode(CON::FETCH_ASSOC);
-        if ($this->con->affected_rows>0){
+        if ($this->con->affected_rows>1){
             echo "<script>swal({title: 'Exito',text: 'El registro se realizo con exito',icon: 'success', closeOnConfirm: false}).then(function(){window.location = 'devolucion.php'})</script>";
             
         }else{
