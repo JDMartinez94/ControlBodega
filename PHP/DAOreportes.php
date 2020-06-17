@@ -1,6 +1,5 @@
 <?php
 include ("DAOempleado.php");
-include ("credenciales.php");
 $empleado = new DAOempleado();
 
 class DAOreportes{
