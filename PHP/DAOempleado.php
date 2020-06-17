@@ -54,7 +54,7 @@ class DAOempleado {
             echo "<script>swal({title: 'Exito',text: 'El registro fue exitoso',icon: 'success', closeOnConfirm: false}).then(function(){window.location = 'personal.php'})</script>";
             
         }else{
-            echo "<script>swal({title: 'Error',text: 'Algo salio mal, el registro no se hizo',icon: 'error'})</script>";
+            echo "<script>swal({title: 'Error',text: 'Algo salio mal, el registro no se hizo',icon: 'error', closeOnConfirm: false}).then(function(){window.location = 'personal.php'})</script>";
         }
         $this->desconectar();
         

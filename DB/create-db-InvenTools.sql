@@ -180,20 +180,20 @@ insert into registro (fecha_registro, id_tipo_registro, codigo_herramienta, id_e
 
 -- STORED PROCEDURES
 
--- SP para ingresar registritros de préstamos
+-- SP para ingresar registros de préstamos
 DELIMITER // ;
  Create PROCEDURE InsertarNuevoPrestamo(IN p_fecha_ingreso datetime, IN p_id_tipo_registro int, IN p_codigo_herramienta int, IN p_id_empleado int, IN p_id_usuario int)
  BEGIN
- insert into registro (fecha_registro, id_tipo_registro, codigo_herramienta, id_empleado, id_usuario) values (p_fecha_ingreso, p_id_tipo_registro, p_codigo_herramienta, p_id_empleado, p_id_usuario);
+ insert into registro (fecha_registro, id_tipo_registro, codigo_herramienta, id_empleado, id_usuario) select p_fecha_ingreso, p_id_tipo_registro, p_codigo_herramienta, p_id_empleado, p_id_usuario where (select id_condicion from herramienta where codigo_herramienta=p_codigo_herramienta)=1 and (select id_status_prestamo from herramienta where codigo_herramienta=p_codigo_herramienta)=1;
  update herramienta set id_status_uso = 2 where codigo_herramienta = p_codigo_herramienta; 
  update herramienta set id_status_prestamo = 2 where codigo_herramienta = p_codigo_herramienta; 
 END // ;
 
--- SP para ingresar registritros de devoluciones
+-- SP para ingresar registros de devoluciones
 DELIMITER // ;
  Create PROCEDURE InsertarNuevaDevolucion(IN p_fecha_ingreso datetime, IN p_id_tipo_registro int, IN p_codigo_herramienta int, IN p_id_empleado int, IN p_id_usuario int)
  BEGIN
- insert into registro (fecha_registro, id_tipo_registro, codigo_herramienta, id_empleado, id_usuario) values (p_fecha_ingreso, p_id_tipo_registro, p_codigo_herramienta, p_id_empleado, p_id_usuario);
+ insert into registro (fecha_registro, id_tipo_registro, codigo_herramienta, id_empleado, id_usuario) select p_fecha_ingreso, p_id_tipo_registro, p_codigo_herramienta, p_id_empleado, p_id_usuario where (select id_status_prestamo from herramienta where codigo_herramienta=p_codigo_herramienta)=2;
  update herramienta set id_status_prestamo = 1 where codigo_herramienta = p_codigo_herramienta; 
 END // ;
 
@@ -223,6 +223,15 @@ DELIMITER // ;
 	join condicion cd on cd.id_condicion = h.id_condicion
 	where c.nombre_categoria like p_nombre_categoria;
 END // ;
+
+
+
+
+
+
+
+
+
 
 
 

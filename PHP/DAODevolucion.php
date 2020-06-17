@@ -28,7 +28,7 @@ class DAODevolucion{
             echo "<script>swal({title: 'Exito',text: 'El registro se realizo con exito',icon: 'success', closeOnConfirm: false}).then(function(){window.location = 'devolucion.php'})</script>";
             
         }else{
-            echo "<script>swal({title: 'Error',text: 'Algo salio mal, no se pudo realizar el registro',icon: 'error'})</script>";
+            echo "<script>swal({title: 'Error',text: 'Algo salio mal, no se pudo realizar el registro',icon: 'error', closeOnConfirm: false}).then(function(){window.location = 'devolucion.php'})</script>";
         }
         $this->desconectar();
     }
