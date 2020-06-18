@@ -3,7 +3,7 @@ session_start();
 $acceso = $_SESSION["user"]["id_rol"];
 include ("PHP/DAOreportes.php");
 include ("PHP/DAOherramienta.php");
-$reporte = new DAOreportes;
+$reporte = new DAOreportes();
 $daoHerr = new DAOherramienta();
 $herramienta = new herramienta();
 
