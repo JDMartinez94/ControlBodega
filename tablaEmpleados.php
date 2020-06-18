@@ -1,8 +1,8 @@
 <?php
 session_start();
 $acceso = $_SESSION["user"]["id_rol"];
-include("PHP/formulas.php");
-include("PHP/DAOreportes.php");
+include ("PHP/formulas.php");
+include ("PHP/DAOreportes.php");
 $reporte = new DAOreportes();
 $daoEmp = new DAOempleado();
 $empleado = new empleado();
