@@ -24,7 +24,7 @@ class DAOPrestamo{
         $this->conectar();
         $this->con->query($sql);
         //$this->setFetchMode(CON::FETCH_ASSOC);
-        if ($this->con->affected_rows>0){
+        if ($this->con->affected_rows>1){
             echo "<script>swal({title: 'Exito',text: 'El registro se realizo con exito',icon: 'success', closeOnConfirm: false}).then(function(){window.location = 'prestamo.php'})</script>";
             
         }else{
@@ -33,7 +33,7 @@ class DAOPrestamo{
         $this->desconectar();
     }
     
-    public function getRegistro(){
+    public function getRegistro($id){
         $sql="select 
             reg.fecha_registro,
             herr.nombre_herramienta,
@@ -43,6 +43,7 @@ class DAOPrestamo{
             join empleado emp on reg.id_empleado = emp.id_empleado
             join usuario usuario on reg.id_usuario = usuario.id_usuario
             join herramienta herr on reg.codigo_herramienta = herr.codigo_herramienta
+            where reg.codigo_herramienta = ".$id."
             order by reg.fecha_registro desc limit 1;";
         $this->conectar();
         $res = $this->con->query($sql);

@@ -52,17 +52,21 @@ $estado = new herramienta();
 			<button type="submit" class="btn btn-primary" name="cambiarEstado">Crear registro</button>
 			</form>		
 		</div>
+		<?php
+if(isset($_REQUEST["cambiarEstado"])){
+	$codigo=($_REQUEST["codigoHerr"]);
+
+    echo $dao->getHerramienta($codigo);
+}
+?>
 		</div>
 <?php
 if(isset($_REQUEST["cambiarEstado"])){
     $codigo=($_REQUEST["codigoHerr"]);
     $estado->setId_condicion($_REQUEST["estado"]);
     $dao->estadoHerramienta($estado, $codigo);
-    echo $dao->getHerramienta($codigo);
+    //echo $dao->getHerramienta($codigo);
 }
-
-
-
 ?>
 
 	</body>
