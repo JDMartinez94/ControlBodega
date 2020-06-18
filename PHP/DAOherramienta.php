@@ -2,7 +2,7 @@
 
 
 include("herramienta.php");
-include("credenciales.php");
+//include("credenciales.php");
 
 class DAOherramienta {
     private $con;
