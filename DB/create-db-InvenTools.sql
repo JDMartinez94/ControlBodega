@@ -63,38 +63,38 @@ create table usuario(
 	nombre_usuario varchar(40) not null unique,
 	contrasena varchar (30),
 	id_empleado int not null,
-	id_rol int not null,
+	id_rol int,
 	primary key (id_usuario),
 	FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado) on delete cascade on update cascade,
-	FOREIGN KEY (id_rol) REFERENCES rol(id_rol) on delete no action on update cascade
+	FOREIGN KEY (id_rol) REFERENCES rol(id_rol) on delete set null on update cascade
 	);
 
 create table herramienta(
 	codigo_herramienta int not null auto_increment,
 	fecha_ingreso datetime,
 	nombre_herramienta varchar (75),
-	id_categoria int not null,
-	id_status_uso int not null,
-    id_status_prestamo int not null,
-    id_condicion int not null,
+	id_categoria int,
+	id_status_uso int,
+    id_status_prestamo int,
+    id_condicion int,
 	primary key (codigo_herramienta),
-	FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria) on delete no action on update cascade,
-	FOREIGN KEY (id_status_uso) REFERENCES status_uso(id_status_uso) on delete no action on update cascade,
-    FOREIGN KEY (id_status_prestamo) REFERENCES status_prestamo(id_status_prestamo) on delete no action on update cascade,
-    FOREIGN KEY (id_condicion) REFERENCES condicion(id_condicion) on delete no action on update cascade
+	FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria) on delete set null on update cascade,
+	FOREIGN KEY (id_status_uso) REFERENCES status_uso(id_status_uso) on delete set null on update cascade,
+    FOREIGN KEY (id_status_prestamo) REFERENCES status_prestamo(id_status_prestamo) on delete set null on update cascade,
+    FOREIGN KEY (id_condicion) REFERENCES condicion(id_condicion) on delete set null on update cascade
 	);
 
 
 create table registro(
 	id_registro int not null auto_increment,
 	fecha_registro datetime,
-	id_tipo_registro int not null,
-	codigo_herramienta int not null,
+	id_tipo_registro int,
+	codigo_herramienta int,
 	id_empleado int,
     id_usuario int,
 	primary key (id_registro),
-	FOREIGN KEY (id_tipo_registro) REFERENCES tipo_registro(id_tipo_registro) on delete no action on update cascade,
-	FOREIGN KEY (codigo_herramienta) REFERENCES herramienta(codigo_herramienta) on delete no action on update cascade,
+	FOREIGN KEY (id_tipo_registro) REFERENCES tipo_registro(id_tipo_registro) on delete set null on update cascade,
+	FOREIGN KEY (codigo_herramienta) REFERENCES herramienta(codigo_herramienta) on delete set null on update cascade,
     FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado) on delete set null on update cascade,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) on delete set null on update cascade
 	);
