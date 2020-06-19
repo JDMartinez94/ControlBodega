@@ -9,7 +9,6 @@ $devo = new registro();
 date_default_timezone_set('America/El_Salvador');
 
 $id = $_SESSION["user"]["id_usuario"];
-echo $id;
 
 ?>
 
