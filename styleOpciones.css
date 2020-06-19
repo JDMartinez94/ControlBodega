@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
-
 body {
 	height: 100vh;
 	margin: 0px;
@@ -9,7 +7,6 @@ body {
 	background-size: cover;
 	background-attachment: fixed;
 	background-color: rgba(0, 0, 0, 0.77);
-	font-family: 'Black Ops One', sans-serif;
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 15% 85%;
@@ -54,11 +51,6 @@ body {
 	}
 }
 
-#activo {
-	justify-self: center;
-	background-color: rgba(242, 205, 73, 1);
-}
-
 #opcion {
 	justify-self: center;
 }
@@ -72,7 +64,7 @@ body {
 	grid-row: 2/3;
 	background-color: rgba(177, 169, 177, 0.609);
 	width: 90%;
-	height: 90%;
+	padding: 5px;
 	justify-self: center;
 	align-self: center;
 	border-radius: 25px;
