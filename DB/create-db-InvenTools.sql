@@ -228,24 +228,10 @@ DELIMITER // ;
 	where c.nombre_categoria like p_nombre_categoria;
 END // ;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-- SP para cambiar la condicion de una herramienta
+DELIMITER // ;
+Create PROCEDURE actualizarHerramienta(IN p_id_condicion int, IN p_codigo_herramienta int)
+BEGIN
+update herramienta set id_status_prestamo = 1 where codigo_herramienta = p_codigo_herramienta; 
+update herramienta set id_condicion = p_id_condicion where codigo_herramienta = p_codigo_herramienta;
+END;
