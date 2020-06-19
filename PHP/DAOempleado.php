@@ -22,7 +22,7 @@ class DAOempleado {
         $this->conectar();
         $res = $this->con->query($sql);
         $this->desconectar();
-        $tabla="<div style=' margin: auto; width: 90%;  background-color: white; border-radius: 20px '>"
+        $tabla="<br><div style=' margin: auto; width: 90%;  background-color: white; border-radius: 20px '>"
         . "<h3 style=' text-align: center'>Detalles del registro</h3>"
         ."<table class='table'>"
         ."<thead class='thead-dark'>";
@@ -51,7 +51,7 @@ class DAOempleado {
         $sql="insert into empleado (nombre_empleado,direccion,telefono) values ('".$obj->getNombre_empleado()."','".$obj->getDireccion()."','".$obj->getTelefono()."');";
         $this->conectar();
         if ($this->con->query($sql)){
-            echo "<script>swal({title: 'Exito',text: 'El registro fue exitoso',icon: 'success', closeOnConfirm: false}).then(function(){window.location = 'personal.php'})</script>";
+            echo "<script>swal({title: 'Exito',text: 'El registro fue exitoso (tome nota del ID de empleado que creo)',icon: 'success', closeOnConfirm: false}).then(function(){window.location = 'personal.php'})</script>";
             
         }else{
             echo "<script>swal({title: 'Error',text: 'Algo salio mal, el registro no se hizo',icon: 'error', closeOnConfirm: false}).then(function(){window.location = 'personal.php'})</script>";

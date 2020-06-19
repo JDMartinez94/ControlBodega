@@ -20,10 +20,7 @@ class DAOcondicion{
     public function estadoHerramienta($obj,$codigo_herramienta){
         $estado = new herramienta();
         $estado = $obj;
-        $sql = "update herramienta set "
-                . "id_condicion = ".$estado->getId_condicion()."
-                    where codigo_herramienta = ".$codigo_herramienta.";";
-    
+        $sql = "call actualizarHerramienta(".$estado->getId_condicion().",".$codigo_herramienta.");";
         $this->conectar();
         if ($this->con->query($sql)){
             echo "<script>swal({title:'Exito',text:'El estado de la herramienta fue actualizado',icon:'success', closeOnConfirm: false}).then(function(){window.location = 'herrDanadas.php'})</script>";
@@ -55,7 +52,7 @@ class DAOcondicion{
                     . "<th>Codigo Herramienta</th>"
                     . "<th>Nombre</th>"
                     . "<th>Categoria</th>"
-                    . "<th>Condicion Actual</th>"
+                    . "<th>Condicion Anterior</th>"
                 . "</tr></thead><tbody>";
         while ($fila = mysqli_fetch_assoc($res)){
         $tabla .="<tr>"

@@ -36,15 +36,7 @@ $usuario = new usuario();
 		</div>
 
 		<div id="modal">
-		<?php
-		if(isset($_REQUEST["empleado"])){
-			$empleado->setNombre_empleado($_REQUEST["nomEmp"]);
-			$empleado->setDireccion($_REQUEST["dir"]);
-			$empleado->setTelefono($_REQUEST["tel"]);
-			$daoEmpleado->insertar($empleado);
-			echo $daoEmpleado->getEmpleado();
-		}
-		?>
+
     <div style="width:90%; margin: auto; background-color: white; padding: 15px; display: grid; grid-template-columns: 50% 50%; grid-template-rows: 1fr">
         <div style=" align-self: center; justify-self: center;width:90%">	
         <form method="POST" action="#">
@@ -92,8 +84,17 @@ $usuario = new usuario();
 			<br>
                         <button type="submit" class="btn btn-primary" name="usuario">Crear registro</button>
                 </form>	
-        </div>        
-    </div>                                    
+        </div>     
+    </div>
+	<?php
+		if(isset($_REQUEST["empleado"])){
+			$empleado->setNombre_empleado($_REQUEST["nomEmp"]);
+			$empleado->setDireccion($_REQUEST["dir"]);
+			$empleado->setTelefono($_REQUEST["tel"]);
+			$daoEmpleado->insertar($empleado);
+			echo $daoEmpleado->getEmpleado();
+		}
+		?>
                     
 </div>
 <?php

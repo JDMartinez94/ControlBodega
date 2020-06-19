@@ -59,12 +59,7 @@ date_default_timezone_set('America/El_Salvador');
                          <input type="hidden" name="condicion" value="1">
 						 <input type="hidden" name="statusUso" value="1">                       
 <br>
-			<!--<label for="nivelAccess">Estado de la herramienta</label>
-                        <select class="form-control" name="estado">
-			<option>Seleccione una opcion</option>
-                        <option value="1">Nueva</option>
-                        <option value="2">Usada</option>
-			</select>-->
+
 
 			<br>
                         <button type="submit" class="btn btn-primary" name="registro" value="submit">Crear registro</button>
