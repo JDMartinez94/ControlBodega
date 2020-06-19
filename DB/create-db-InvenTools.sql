@@ -90,13 +90,13 @@ create table registro(
 	fecha_registro datetime,
 	id_tipo_registro int not null,
 	codigo_herramienta int not null,
-	id_empleado int not null,
-    id_usuario int not null,
+	id_empleado int,
+    id_usuario int,
 	primary key (id_registro),
 	FOREIGN KEY (id_tipo_registro) REFERENCES tipo_registro(id_tipo_registro) on delete no action on update cascade,
 	FOREIGN KEY (codigo_herramienta) REFERENCES herramienta(codigo_herramienta) on delete no action on update cascade,
-    FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado) on delete no action on update cascade,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) on delete no action on update cascade
+    FOREIGN KEY (id_empleado) REFERENCES empleado(id_empleado) on delete set null on update cascade,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario) on delete set null on update cascade
 	);
 
 ---------------------------------------------------------------------------------------
